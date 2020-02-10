@@ -1,7 +1,7 @@
 package com.soprasteria.booking.dao;
 
 import com.soprasteria.booking.model.Need;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface NeedDao  extends JpaRepository<Need,Long> {
+public interface NeedDao  extends PagingAndSortingRepository<Need,Long> {
 }
