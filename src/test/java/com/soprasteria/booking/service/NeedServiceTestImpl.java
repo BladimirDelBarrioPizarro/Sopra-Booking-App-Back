@@ -43,4 +43,13 @@ public class NeedServiceTestImpl {
        NeedDTO needDTO1 = needService.saveNeed(need);
        assert (needDTO.getId().equals(needDTO1.getId()));
     }
+
+    @Test
+    void updateNeedTest(){
+        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
+        Need need = NeedsServiceDummy.needDummy();
+        given(needService.updateNeed(any())).willReturn(needDTO);
+        NeedDTO needDTO1 = needService.updateNeed(need);
+        assert (needDTO.getId().equals(needDTO1.getId()));
+    }
 }
