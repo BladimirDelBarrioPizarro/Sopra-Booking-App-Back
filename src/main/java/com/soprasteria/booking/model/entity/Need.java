@@ -21,7 +21,7 @@ public class Need implements Serializable {
     private String name;
     @Column(name = "active")
     private Boolean active;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "hiring_need",
             joinColumns = @JoinColumn(name="need_id"),inverseJoinColumns = @JoinColumn(name="hiring_id"),
             uniqueConstraints = {@UniqueConstraint(columnNames = {"need_id","hiring_id"})})

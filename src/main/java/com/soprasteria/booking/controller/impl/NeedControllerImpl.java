@@ -7,6 +7,7 @@ import com.soprasteria.booking.service.NeedService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Links;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,14 @@ public class NeedControllerImpl implements NeedController {
         EntityModel<NeedDTO> need = new EntityModel<>(needService.findById(id));
         need.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getContent()).getId()));
         return new ResponseEntity<>(need,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> saveNeed(Need need) {
+        log.info(" -- POST /needs {}",need.getName());
+        EntityModel<NeedDTO> entity = new EntityModel<>(needService.saveNeed(need));
+        entity.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getId())));
+        Links links = entity.getLinks();
+        return new ResponseEntity(links,HttpStatus.OK);
     }
 }

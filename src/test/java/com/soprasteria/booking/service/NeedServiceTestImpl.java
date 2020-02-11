@@ -1,6 +1,7 @@
 package com.soprasteria.booking.service;
 
 import com.soprasteria.booking.model.dto.NeedDTO;
+import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.service.dummy.NeedsServiceDummy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,5 +33,14 @@ public class NeedServiceTestImpl {
         given(needService.findById(any())).willReturn(needDTO);
         NeedDTO needDTO1 = needService.findById(1L);
         assert (needDTO.getId().equals(needDTO1.getId()));
+    }
+
+    @Test
+    void saveNeedTest(){
+       NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
+       Need need = NeedsServiceDummy.needDummy();
+       given(needService.saveNeed(any())).willReturn(needDTO);
+       NeedDTO needDTO1 = needService.saveNeed(need);
+       assert (needDTO.getId().equals(needDTO1.getId()));
     }
 }

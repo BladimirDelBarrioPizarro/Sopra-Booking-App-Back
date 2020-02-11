@@ -2,10 +2,9 @@ package com.soprasteria.booking.service.dummy;
 
 import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Hiring;
+import com.soprasteria.booking.model.entity.Need;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class NeedsServiceDummy {
     public static NeedDTO needDTODummy(){
         return NeedDTO.builder()
                 .id(1L)
-                .name("Test Need")
+                .name("Test NeedDTO")
                 .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
                 .build();
     }
@@ -28,5 +27,12 @@ public class NeedsServiceDummy {
         return Arrays.asList(needDTODummy());
     }
 
+    public static Need needDummy(){
+        return Need.builder()
+                .id(1L)
+                .name("Test Need")
+                .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
+                .build();
+    }
 
 }
