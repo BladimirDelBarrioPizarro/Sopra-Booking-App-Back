@@ -6,12 +6,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+
 
 @Data
 @Builder
-@AllArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "hiring")
 public class Hiring implements Serializable {
@@ -22,5 +22,4 @@ public class Hiring implements Serializable {
     private String name;
     @Column(name = "active")
     private Boolean active;
-
 }
