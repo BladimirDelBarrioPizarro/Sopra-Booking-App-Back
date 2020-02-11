@@ -25,4 +25,12 @@ public class NeedServiceTestImpl {
         List<NeedDTO> needDTOS1 = needService.findAll(pageRequest);
         assert ( needDTOS1.size() > 0);
     }
+
+    @Test
+    void findByIdTest(){
+        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
+        given(needService.findById(any())).willReturn(needDTO);
+        NeedDTO needDTO1 = needService.findById(1L);
+        assert (needDTO.getId().equals(needDTO1.getId()));
+    }
 }
