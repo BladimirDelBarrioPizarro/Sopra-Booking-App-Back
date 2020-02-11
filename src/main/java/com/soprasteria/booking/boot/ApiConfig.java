@@ -12,6 +12,7 @@ import com.soprasteria.booking.service.impl.HiringServiceImpl;
 import com.soprasteria.booking.service.impl.NeedServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.hateoas.server.EntityLinks;
 
 @Configuration
 public class ApiConfig {
@@ -27,8 +28,8 @@ public class ApiConfig {
     }
 
     @Bean
-    public NeedController needController(NeedService needService){
-        return new NeedControllerImpl(needService);
+    public NeedController needController(NeedService needService, EntityLinks entityLinks){
+        return new NeedControllerImpl(needService,entityLinks);
     }
 
     @Bean
