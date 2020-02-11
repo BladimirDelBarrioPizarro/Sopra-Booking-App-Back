@@ -62,15 +62,12 @@ public class NeedControllerImpl implements NeedController {
 
     @Override
     public ResponseEntity<Void> deleteNeed(Long id) {
+        log.info(" -- DELETE /needs {}",id);
         NeedDTO needDTO = needService.findById(id);
         if(needDTO==null){
             return ResponseEntity.noContent().build();
         }
-        else{
-            needService.deleteNeed(id);
-            return new ResponseEntity(HttpStatus.OK);
-        }
+        needService.deleteNeed(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
-
-
 }
