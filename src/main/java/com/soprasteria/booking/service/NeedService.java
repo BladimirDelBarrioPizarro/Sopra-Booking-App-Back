@@ -11,6 +11,7 @@ public interface NeedService {
     NeedDTO findById(Long id);
     NeedDTO saveNeed(Need need);
     NeedDTO updateNeed(Need need);
+    Boolean deleteNeed(Long id);
 }
 
 

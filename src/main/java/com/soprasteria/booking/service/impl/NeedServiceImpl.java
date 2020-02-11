@@ -45,8 +45,8 @@ public class NeedServiceImpl implements NeedService {
         }catch (Exception ex){
             log.error(" -- ERROR GET/needs/{} Message:{}",id,ex.getMessage());
             //throw new HandleExceptionfindNeedById(ex);
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -56,8 +56,8 @@ public class NeedServiceImpl implements NeedService {
         }catch (Exception ex){
             log.error(" -- ERROR POST/needs {}",ex.getMessage());
             //throw new HandleExceptionSaveNeed(ex);
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -66,8 +66,20 @@ public class NeedServiceImpl implements NeedService {
             return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
         }catch (Exception ex){
             log.error(" -- ERROR PUT/needs {}",ex.getMessage());
+            //throw new HandleExceptionSaveNeed(ex);
+            return null;
         }
-        return null;
+    }
+
+    @Override
+    public Boolean deleteNeed(Long id) {
+        try{
+           needDao.deleteById(id);
+           return true;
+        }catch (Exception ex){
+            log.error(" -- ERROR DELETE/needs {}",ex.getMessage());
+            return false;
+        }
     }
 
     private PageRequest pageRequest(Pageable pageable) {
