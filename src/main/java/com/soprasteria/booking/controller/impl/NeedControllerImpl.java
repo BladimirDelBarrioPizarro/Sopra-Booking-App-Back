@@ -5,6 +5,7 @@ import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.service.NeedService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
@@ -23,10 +24,10 @@ public class NeedControllerImpl implements NeedController {
         this.entityLinks = entityLinks;
     }
 
-    public ResponseEntity<EntityModel<NeedDTO>> findAll(Pageable pageable) {
+    public ResponseEntity<CollectionModel<NeedDTO>> findAll(Pageable pageable) {
         log.info(" -- GET /needs");
-        EntityModel<NeedDTO> needs = new EntityModel(needService.findAll(pageable));
-        needs.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(needs.getLinks())));
+        CollectionModel<NeedDTO> needs = new CollectionModel(needService.findAll(pageable));
+        needs.add(entityLinks.linkToItemResource(Need.class, "/api/v1/needs"));
         return new ResponseEntity<>(needs, HttpStatus.OK);
     }
 }
