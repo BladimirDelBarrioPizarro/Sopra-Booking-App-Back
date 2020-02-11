@@ -25,4 +25,7 @@ public interface NeedController {
 
     @PostMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveNeed(@RequestBody Need need);
+
+    @PutMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<EntityModel<Links>> updateNeed(@RequestBody Need need);
 }

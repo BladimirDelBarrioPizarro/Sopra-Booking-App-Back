@@ -50,4 +50,13 @@ public class NeedControllerImpl implements NeedController {
         Links links = entity.getLinks();
         return new ResponseEntity(links,HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> updateNeed(Need need) {
+        log.info(" -- PUT /needs {}",need.getName());
+        EntityModel<NeedDTO> entity = new EntityModel<>(needService.updateNeed(need));
+        entity.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getId())));
+        Links links = entity.getLinks();
+        return new ResponseEntity(links,HttpStatus.OK);
+    }
 }

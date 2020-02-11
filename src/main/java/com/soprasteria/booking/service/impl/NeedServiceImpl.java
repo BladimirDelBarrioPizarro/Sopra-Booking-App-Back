@@ -60,6 +60,16 @@ public class NeedServiceImpl implements NeedService {
         return null;
     }
 
+    @Override
+    public NeedDTO updateNeed(Need need) {
+        try{
+            return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
+        }catch (Exception ex){
+            log.error(" -- ERROR PUT/needs {}",ex.getMessage());
+        }
+        return null;
+    }
+
     private PageRequest pageRequest(Pageable pageable) {
         Sort sort = pageable.getSort();
         return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);

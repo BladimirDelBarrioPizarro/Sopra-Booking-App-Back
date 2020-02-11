@@ -10,6 +10,7 @@ public interface NeedService {
     List<NeedDTO> findAll(Pageable pageable);
     NeedDTO findById(Long id);
     NeedDTO saveNeed(Need need);
+    NeedDTO updateNeed(Need need);
 }
 
 
