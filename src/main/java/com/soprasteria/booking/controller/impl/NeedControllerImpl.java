@@ -61,10 +61,10 @@ public class NeedControllerImpl implements NeedController {
     }
 
     @Override
-    public ResponseEntity<EntityModel<Boolean>> deleteNeed(Long id) {
-        log.info(" -- DELETE /needs {}",id);
-        EntityModel<Boolean> need = new EntityModel<>(needService.deleteNeed(id));
-        need.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getContent())));
-        return new ResponseEntity<>(need,HttpStatus.OK);
+    public ResponseEntity<Void> deleteNeed(Long id) {
+        needService.deleteNeed(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
+
+
 }

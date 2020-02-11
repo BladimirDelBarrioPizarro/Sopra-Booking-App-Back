@@ -33,7 +33,7 @@ public class ApiConfig {
     }
 
     @Bean
-    public HiringController hiringController(HiringService hiringService){
-        return new HiringControllerImpl(hiringService);
+    public HiringController hiringController(HiringService hiringService,EntityLinks entityLinks){
+        return new HiringControllerImpl(hiringService,entityLinks);
     }
 }

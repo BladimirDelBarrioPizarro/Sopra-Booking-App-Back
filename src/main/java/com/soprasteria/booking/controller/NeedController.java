@@ -30,5 +30,5 @@ public interface NeedController {
     ResponseEntity<EntityModel<Links>> updateNeed(@RequestBody Need need);
 
     @DeleteMapping( path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Boolean>> deleteNeed(@PathVariable("id") Long id);
+    ResponseEntity<Void> deleteNeed(@PathVariable("id") Long id);
 }
