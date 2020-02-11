@@ -19,6 +19,7 @@ public class NeedsServiceDummy {
         return NeedDTO.builder()
                 .id(1L)
                 .name("Test NeedDTO")
+                .active(true)
                 .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
                 .build();
     }
@@ -31,6 +32,7 @@ public class NeedsServiceDummy {
         return Need.builder()
                 .id(1L)
                 .name("Test Need")
+                .active(true)
                 .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
                 .build();
     }

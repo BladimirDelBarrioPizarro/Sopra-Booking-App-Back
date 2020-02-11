@@ -52,4 +52,15 @@ public class NeedServiceTestImpl {
         NeedDTO needDTO1 = needService.updateNeed(need);
         assert (needDTO.getId().equals(needDTO1.getId()));
     }
+
+    @Test
+    void deleteNeedTest(){
+        Need need = NeedsServiceDummy.needDummy();
+        needService.saveNeed(need);
+        given(needService.deleteNeed(any())).willReturn(true);
+        Boolean check2 = needService.deleteNeed(need.getId());
+        NeedDTO needDTO1 = needService.findById(need.getId());
+        assert (check2);
+        assert (needDTO1 == null);
+    }
 }
