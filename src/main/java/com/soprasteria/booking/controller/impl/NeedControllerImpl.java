@@ -11,7 +11,9 @@ import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
+
 import java.util.Objects;
+
 
 @Slf4j
 public class NeedControllerImpl implements NeedController {
@@ -29,5 +31,13 @@ public class NeedControllerImpl implements NeedController {
         CollectionModel<NeedDTO> needs = new CollectionModel(needService.findAll(pageable));
         needs.add(entityLinks.linkToItemResource(Need.class, "/api/v1/needs"));
         return new ResponseEntity<>(needs, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<NeedDTO>> findById(Long id) {
+        log.info(" -- GET /needs/{}",id);
+        EntityModel<NeedDTO> need = new EntityModel<>(needService.findById(id));
+        need.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getContent()).getId()));
+        return new ResponseEntity<>(need,HttpStatus.OK);
     }
 }

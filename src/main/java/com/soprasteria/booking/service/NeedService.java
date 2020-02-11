@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface NeedService {
     List<NeedDTO> findAll(Pageable pageable);
+    NeedDTO findById(Long id);
 }
 
 

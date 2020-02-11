@@ -38,6 +38,16 @@ public class NeedServiceImpl implements NeedService {
         }
     }
 
+    @Override
+    public NeedDTO findById(Long id) {
+        try{
+           return NeedMapper.mapNeedOptionalToNeedDTO(needDao.findById(id));
+        }catch (Exception ex){
+            log.error(" -- ERROR GET/needs/{} Message:{}",id,ex.getMessage());
+        }
+        return null;
+    }
+
     private PageRequest pageRequest(Pageable pageable) {
         Sort sort = pageable.getSort();
         return PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
