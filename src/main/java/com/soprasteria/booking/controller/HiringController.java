@@ -14,4 +14,7 @@ public interface HiringController {
 
     @GetMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<CollectionModel<NeedDTO>> findAll();
+
+
+
 }
