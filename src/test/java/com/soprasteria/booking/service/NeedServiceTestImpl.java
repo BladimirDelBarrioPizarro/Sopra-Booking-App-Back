@@ -47,10 +47,12 @@ public class NeedServiceTestImpl {
     @Test
     void updateNeedTest(){
         NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
+        needDTO.setActive(false);
         Need need = NeedsServiceDummy.needDummy();
+        need.setActive(false);
         given(needService.updateNeed(any())).willReturn(needDTO);
         NeedDTO needDTO1 = needService.updateNeed(need);
-        assert (needDTO.getId().equals(needDTO1.getId()));
+        assert (needDTO.getActive().equals(needDTO1.getActive()));
     }
 
     @Test

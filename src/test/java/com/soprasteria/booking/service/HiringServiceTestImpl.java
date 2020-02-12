@@ -44,5 +44,16 @@ public class HiringServiceTestImpl {
         assert (hiringDTO.getId().equals(hiringDTO1.getId()));
     }
 
+    @Test
+    void updateHiringTest(){
+        HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
+        hiringDTO.setActive(false);
+        Hiring hiring = HiringServiceDummy.hiringDummy();
+        hiring.setActive(false);
+        given(hiringService.updateHiring(any())).willReturn(hiringDTO);
+        HiringDTO hiringDTO1 = hiringService.updateHiring(hiring);
+        assert (hiringDTO1.getActive().equals(hiringDTO.getActive()));
+    }
+
 }
 
