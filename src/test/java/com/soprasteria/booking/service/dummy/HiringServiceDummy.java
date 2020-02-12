@@ -17,7 +17,7 @@ public class HiringServiceDummy {
         return HiringDTO.builder()
                 .id(1L)
                 .name("Test HiringDTO")
-                .need(NeedsServiceDummy.needDummy())
+                .active(true)
                 .build();
     }
 }

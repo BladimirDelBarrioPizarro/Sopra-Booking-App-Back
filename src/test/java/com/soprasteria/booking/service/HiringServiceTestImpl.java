@@ -25,5 +25,25 @@ public class HiringServiceTestImpl {
         List<HiringDTO> hiringDTOList2 = hiringService.findAll();
         assert (hiringDTOList2.size() > 0);
     }
+
+    @Test
+    void findByIdTest(){
+        HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
+        given(hiringService.findById(any())).willReturn(hiringDTO);
+        HiringDTO hiringDTO1 = hiringService.findById(1L);
+        assert (hiringDTO.getId().equals(hiringDTO1.getId()));
+    }
+
+
+    /*
+    *  @Test
+    void findByIdTest(){
+        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
+        given(needService.findById(any())).willReturn(needDTO);
+        NeedDTO needDTO1 = needService.findById(1L);
+        assert (needDTO.getId().equals(needDTO1.getId()));
+    }
+    *
+    * */
 }
 
