@@ -47,8 +47,7 @@ public class NeedControllerImpl implements NeedController {
         log.info(" -- POST /needs {}",need.getName());
         EntityModel<NeedDTO> entity = new EntityModel<>(needService.saveNeed(need));
         entity.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getId())));
-        Links links = entity.getLinks();
-        return new ResponseEntity(links,HttpStatus.OK);
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
 
     @Override
@@ -56,8 +55,7 @@ public class NeedControllerImpl implements NeedController {
         log.info(" -- PUT /needs {}",need.getName());
         EntityModel<NeedDTO> entity = new EntityModel<>(needService.updateNeed(need));
         entity.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getId())));
-        Links links = entity.getLinks();
-        return new ResponseEntity(links,HttpStatus.OK);
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
 
     @Override

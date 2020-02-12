@@ -23,7 +23,7 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringListToHiringListDTO((List<Hiring>) hiringDao.findAll());
         }catch (Exception ex){
-            log.error(" -- ERROR GET/hirings {}", ex.getMessage());
+            log.error(" -- ERROR GET /hirings {}", ex.getMessage());
             return null;
         }
     }
@@ -33,7 +33,7 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringOptionalToHiringDTO(hiringDao.findById(id));
         }catch (Exception ex){
-            log.error(" -- ERROR GET/hirings {} Message: {}",id,ex.getMessage());
+            log.error(" -- ERROR GET /hirings {} Message: {}",id,ex.getMessage());
             return null;
         }
     }
@@ -43,7 +43,17 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
         }catch (Exception ex){
-            log.error(" -- ERROR POST/hirings {} ",ex.getMessage());
+            log.error(" -- ERROR POST /hirings {} ",ex.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public HiringDTO updateHiring(Hiring hiring) {
+        try{
+            return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
+        }catch (Exception ex){
+            log.error(" -- ERROR POST /hirings {} ",ex.getMessage());
             return null;
         }
     }

@@ -20,7 +20,7 @@ public class HiringServiceTestImpl {
     private HiringService hiringService = mock(HiringService.class);
 
     @Test
-    void findAll(){
+    void findAllTest(){
         List<HiringDTO> hiringDTOList = HiringServiceDummy.hiringDTOListDummy();
         when(hiringService.findAll()).thenReturn(hiringDTOList);
         List<HiringDTO> hiringDTOList2 = hiringService.findAll();
@@ -36,7 +36,7 @@ public class HiringServiceTestImpl {
     }
 
     @Test
-    void saveHiring(){
+    void saveHiringTest(){
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         Hiring hiring = HiringServiceDummy.hiringDummy();
         given(hiringService.saveHiring(any())).willReturn(hiringDTO);

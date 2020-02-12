@@ -39,7 +39,7 @@ public class NeedServiceImpl implements NeedService {
         try{
            return NeedMapper.mapNeedOptionalToNeedDTO(needDao.findById(id));
         }catch (Exception ex){
-            log.error(" -- ERROR GET/needs/{} Message:{}",id,ex.getMessage());
+            log.error(" -- ERROR GET /needs/{} Message:{}",id,ex.getMessage());
             //throw new HandleExceptionfindNeedById(ex);
             return null;
         }
@@ -50,7 +50,7 @@ public class NeedServiceImpl implements NeedService {
         try{
             return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
         }catch (Exception ex){
-            log.error(" -- ERROR POST/needs {}",ex.getMessage());
+            log.error(" -- ERROR POST /needs {}",ex.getMessage());
             //throw new HandleExceptionSaveNeed(ex);
             return null;
         }
@@ -61,7 +61,7 @@ public class NeedServiceImpl implements NeedService {
         try{
             return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
         }catch (Exception ex){
-            log.error(" -- ERROR PUT/needs {}",ex.getMessage());
+            log.error(" -- ERROR PUT /needs {}",ex.getMessage());
             //throw new HandleExceptionSaveNeed(ex);
             return null;
         }
@@ -73,7 +73,7 @@ public class NeedServiceImpl implements NeedService {
         try{
             needDao.deleteById(id);
         }catch (Exception ex){
-            log.error(" -- ERROR DELETE/needs {}",ex.getMessage());
+            log.error(" -- ERROR DELETE /needs {}",ex.getMessage());
         }
     }
 

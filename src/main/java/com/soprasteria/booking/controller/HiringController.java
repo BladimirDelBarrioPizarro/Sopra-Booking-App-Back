@@ -22,6 +22,9 @@ public interface HiringController {
     @PostMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveHiring(@RequestBody Hiring hiring);
 
+    @PutMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<EntityModel<Links>> updateHiring(@RequestBody Hiring hiring);
+
 }
 
 
