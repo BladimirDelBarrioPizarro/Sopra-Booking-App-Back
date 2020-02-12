@@ -1,6 +1,7 @@
 package com.soprasteria.booking.service;
 
 import com.soprasteria.booking.model.dto.HiringDTO;
+import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.service.dummy.HiringServiceDummy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,6 +32,15 @@ public class HiringServiceTestImpl {
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         given(hiringService.findById(any())).willReturn(hiringDTO);
         HiringDTO hiringDTO1 = hiringService.findById(1L);
+        assert (hiringDTO.getId().equals(hiringDTO1.getId()));
+    }
+
+    @Test
+    void saveHiring(){
+        HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
+        Hiring hiring = HiringServiceDummy.hiringDummy();
+        given(hiringService.saveHiring(any())).willReturn(hiringDTO);
+        HiringDTO hiringDTO1 = hiringService.saveHiring(hiring);
         assert (hiringDTO.getId().equals(hiringDTO1.getId()));
     }
 
