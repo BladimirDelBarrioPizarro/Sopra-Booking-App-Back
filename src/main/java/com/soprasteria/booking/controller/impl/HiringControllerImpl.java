@@ -8,9 +8,12 @@ import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.service.HiringService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.Objects;
 
 @Slf4j
 public class HiringControllerImpl implements HiringController {
@@ -24,10 +27,18 @@ public class HiringControllerImpl implements HiringController {
     }
 
     @Override
-    public ResponseEntity<CollectionModel<NeedDTO>> findAll() {
+    public ResponseEntity<CollectionModel<HiringDTO>> findAll() {
         log.info(" -- GET /hiring");
         CollectionModel<HiringDTO> hirings = new CollectionModel(hiringService.findAll());
         hirings.add(entityLinks.linkToItemResource(Hiring.class, "/api/v1/hiring"));
         return new ResponseEntity(hirings, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<HiringDTO>> findById(Long id) {
+        log.info(" -- GET /hiring/{}",id);
+        EntityModel<HiringDTO> hiring = new EntityModel<>(hiringService.findById(id));
+        hiring.add(entityLinks.linkToItemResource(Hiring.class, Objects.requireNonNull(hiring.getContent().getId())));
+        return new ResponseEntity<>(hiring,HttpStatus.OK);
     }
 }

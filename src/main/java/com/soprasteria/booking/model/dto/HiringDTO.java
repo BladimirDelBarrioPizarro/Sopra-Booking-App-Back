@@ -1,6 +1,5 @@
 package com.soprasteria.booking.model.dto;
 
-import com.soprasteria.booking.model.entity.Need;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,5 +8,5 @@ import lombok.Data;
 public class HiringDTO {
     private Long id;
     private String name;
-    private Need need;
+    private Boolean active;
 }

@@ -4,6 +4,7 @@ import com.soprasteria.booking.model.dto.HiringDTO;
 import com.soprasteria.booking.model.entity.Hiring;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class HiringMapper {
@@ -15,7 +16,15 @@ public class HiringMapper {
         return HiringDTO.builder()
                 .id(hiring.getId())
                 .name(hiring.getName())
+                .active(hiring.getActive())
                 .build();
     }
 
+    public static HiringDTO mapHiringOptionalToHiringDTO(Optional<Hiring> hiringOptional) {
+        return HiringDTO.builder()
+                .id(hiringOptional.get().getId())
+                .name(hiringOptional.get().getName())
+                .active(hiringOptional.get().getActive())
+                .build();
+    }
 }

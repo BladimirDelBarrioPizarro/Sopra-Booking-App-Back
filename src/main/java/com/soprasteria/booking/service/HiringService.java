@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface HiringService {
     List<HiringDTO> findAll();
+    HiringDTO findById(Long id);
 }

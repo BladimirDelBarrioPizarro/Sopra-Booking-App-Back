@@ -27,5 +27,15 @@ public class HiringServiceImpl implements HiringService {
             return null;
         }
     }
+
+    @Override
+    public HiringDTO findById(Long id) {
+        try{
+            return HiringMapper.mapHiringOptionalToHiringDTO(hiringDao.findById(id));
+        }catch (Exception ex){
+            log.error(" -- ERROR GET/hirings {} Message: {}",id,ex.getMessage());
+            return null;
+        }
+    }
 }
 
