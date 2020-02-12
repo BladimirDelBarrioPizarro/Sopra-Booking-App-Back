@@ -57,5 +57,15 @@ public class HiringServiceImpl implements HiringService {
             return null;
         }
     }
+
+    @Override
+    public void deleteHiring(Long id) {
+        try{
+            hiringDao.deleteById(id);
+        }catch (Exception ex){
+            log.error(" -- ERROR DELETE /hiring {}",ex.getMessage());
+        }
+    }
 }
+
 

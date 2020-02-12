@@ -11,4 +11,5 @@ public interface HiringService {
     HiringDTO findById(Long id);
     HiringDTO saveHiring(Hiring hiring);
     HiringDTO updateHiring(Hiring hiring);
+    void deleteHiring(Long id);
 }

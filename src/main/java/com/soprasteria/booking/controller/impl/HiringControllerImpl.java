@@ -58,12 +58,15 @@ public class HiringControllerImpl implements HiringController {
         entity.add(entityLinks.linkToItemResource(Hiring.class,Objects.requireNonNull(hiring.getId())));
         return  new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<Void> deleteHiring(Long id) {
+        log.info(" -- DELETE /hiring {}",id);
+        HiringDTO hiringDTO = hiringService.findById(id);
+        if(hiringDTO == null){
+            return ResponseEntity.noContent().build();
+        }
+        hiringService.deleteHiring(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
-
-
-/*
-*
-*
-*
-*
-* */
