@@ -34,16 +34,5 @@ public class HiringServiceTestImpl {
         assert (hiringDTO.getId().equals(hiringDTO1.getId()));
     }
 
-
-    /*
-    *  @Test
-    void findByIdTest(){
-        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
-        given(needService.findById(any())).willReturn(needDTO);
-        NeedDTO needDTO1 = needService.findById(1L);
-        assert (needDTO.getId().equals(needDTO1.getId()));
-    }
-    *
-    * */
 }
 

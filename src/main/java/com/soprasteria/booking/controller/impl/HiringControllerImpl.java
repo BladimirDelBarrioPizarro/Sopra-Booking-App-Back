@@ -9,6 +9,7 @@ import com.soprasteria.booking.service.HiringService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Links;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,13 @@ public class HiringControllerImpl implements HiringController {
         EntityModel<HiringDTO> hiring = new EntityModel<>(hiringService.findById(id));
         hiring.add(entityLinks.linkToItemResource(Hiring.class, Objects.requireNonNull(hiring.getContent().getId())));
         return new ResponseEntity<>(hiring,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> saveHiring(Hiring hiring) {
+        log.info(" -- POST /needs {}",hiring.getName());
+        EntityModel<HiringDTO> entity = new EntityModel<>(hiringService.saveHiring(hiring));
+        entity.add(entityLinks.linkToItemResource(Hiring.class,Objects.requireNonNull(hiring.getId())));
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
 }

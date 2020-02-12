@@ -37,5 +37,15 @@ public class HiringServiceImpl implements HiringService {
             return null;
         }
     }
+
+    @Override
+    public HiringDTO saveHiring(Hiring hiring) {
+        try{
+            return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
+        }catch (Exception ex){
+            log.error(" -- ERROR POST/hirings {} ",ex.getMessage());
+            return null;
+        }
+    }
 }
 

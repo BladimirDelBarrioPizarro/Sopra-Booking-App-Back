@@ -12,7 +12,7 @@ public class HiringMapper {
         return hiringList.stream().map(HiringMapper::mapHiringToHiringDTO).collect(Collectors.toList());
     }
 
-    private static HiringDTO mapHiringToHiringDTO(Hiring hiring) {
+    public static HiringDTO mapHiringToHiringDTO(Hiring hiring) {
         return HiringDTO.builder()
                 .id(hiring.getId())
                 .name(hiring.getName())
