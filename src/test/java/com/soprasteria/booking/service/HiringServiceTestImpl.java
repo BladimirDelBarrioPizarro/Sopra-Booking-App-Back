@@ -3,7 +3,6 @@ package com.soprasteria.booking.service;
 import com.soprasteria.booking.model.dto.HiringDTO;
 import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.service.dummy.HiringServiceDummy;
-import com.soprasteria.booking.service.impl.HiringServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,13 +18,13 @@ import static org.mockito.Mockito.when;
 public class HiringServiceTestImpl {
 
     private HiringService hiringService = mock(HiringService.class);
-    private HiringServiceImpl hiringServiceImpl = mock(HiringServiceImpl.class);
+
 
     @Test
     void findAllTest(){
         List<HiringDTO> hiringDTOList = HiringServiceDummy.hiringDTOListDummy();
         when(hiringService.findAll()).thenReturn(hiringDTOList);
-        List<HiringDTO> hiringDTOList2 = hiringServiceImpl.findAll();
+        List<HiringDTO> hiringDTOList2 = hiringService.findAll();
         assert (hiringDTOList2.size() > 0);
     }
 
@@ -33,7 +32,7 @@ public class HiringServiceTestImpl {
     void findByIdTest(){
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         given(hiringService.findById(any())).willReturn(hiringDTO);
-        HiringDTO hiringDTO1 = hiringServiceImpl.findById(1L);
+        HiringDTO hiringDTO1 = hiringService.findById(1L);
         assert (hiringDTO.getId().equals(hiringDTO1.getId()));
     }
 
@@ -42,7 +41,7 @@ public class HiringServiceTestImpl {
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         Hiring hiring = HiringServiceDummy.hiringDummy();
         given(hiringService.saveHiring(any())).willReturn(hiringDTO);
-        HiringDTO hiringDTO1 = hiringServiceImpl.saveHiring(hiring);
+        HiringDTO hiringDTO1 = hiringService.saveHiring(hiring);
         assert (hiringDTO.getId().equals(hiringDTO1.getId()));
     }
 
@@ -62,7 +61,7 @@ public class HiringServiceTestImpl {
         Hiring hiring = HiringServiceDummy.hiringDummy();
         hiringService.saveHiring(hiring);
         hiringService.deleteHiring(hiring.getId());
-        HiringDTO hiringDTO = hiringServiceImpl.findById(hiring.getId());
+        HiringDTO hiringDTO = hiringService.findById(hiring.getId());
         assert (hiringDTO == null);
     }
 }

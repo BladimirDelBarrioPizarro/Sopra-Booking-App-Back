@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 public class NeedServiceTestImpl {
 
     private NeedService needService = mock(NeedService.class);
-    private NeedServiceImpl needServiceImpl = mock(NeedServiceImpl.class);
+
 
 
     @Test
@@ -25,7 +25,7 @@ public class NeedServiceTestImpl {
         PageRequest pageRequest = NeedsServiceDummy.pageRequestDummy();
         List<NeedDTO> needDTOList = NeedsServiceDummy.needDTOListDummy();
         given(needService.findAll(any())).willReturn(needDTOList);
-        List<NeedDTO> needDTOS1 = needServiceImpl.findAll(pageRequest);
+        List<NeedDTO> needDTOS1 = needService.findAll(pageRequest);
         assert ( needDTOS1.size() > 0);
     }
 
@@ -33,7 +33,7 @@ public class NeedServiceTestImpl {
     void findByIdTest(){
         NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
         given(needService.findById(any())).willReturn(needDTO);
-        NeedDTO needDTO1 = needServiceImpl.findById(1L);
+        NeedDTO needDTO1 = needService.findById(1L);
         assert (needDTO.getId().equals(needDTO1.getId()));
     }
 
@@ -42,7 +42,7 @@ public class NeedServiceTestImpl {
        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
        Need need = NeedsServiceDummy.needDummy();
        given(needService.saveNeed(any())).willReturn(needDTO);
-       NeedDTO needDTO1 = needServiceImpl.saveNeed(need);
+       NeedDTO needDTO1 = needService.saveNeed(need);
        assert (needDTO.getId().equals(needDTO1.getId()));
     }
 
@@ -62,7 +62,7 @@ public class NeedServiceTestImpl {
         Need need = NeedsServiceDummy.needDummy();
         needService.saveNeed(need);
         needService.deleteNeed(need.getId());
-        NeedDTO needDTO1 = needServiceImpl.findById(need.getId());
+        NeedDTO needDTO1 = needService.findById(need.getId());
         assert (needDTO1 == null);
     }
 }
