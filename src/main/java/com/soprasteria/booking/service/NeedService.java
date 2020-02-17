@@ -4,6 +4,7 @@ import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Need;
 import org.springframework.data.domain.Pageable;
 
+
 import java.util.List;
 
 public interface NeedService {

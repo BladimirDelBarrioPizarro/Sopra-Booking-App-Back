@@ -9,8 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
+
+
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -22,11 +24,11 @@ public class NeedServiceImpl implements NeedService {
         this.needDao = needDao;
     }
 
-
     @Override
     public List<NeedDTO> findAll(Pageable pageable) {
         pageable = pageRequest(pageable);
         try{
+            List<Need> needDTOS = (List<Need>) needDao.findAll();
             return NeedMapper.mapNeedListToNeedDTO(needDao.findAll(pageable).stream().collect(Collectors.toList()));
         }catch (Exception ex) {
             log.error(" -- ERROR GET/needs {}", ex.getMessage());

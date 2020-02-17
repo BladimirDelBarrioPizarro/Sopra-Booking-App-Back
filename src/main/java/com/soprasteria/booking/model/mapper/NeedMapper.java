@@ -18,6 +18,7 @@ public class NeedMapper {
                 .name(need.getName())
                 .active(need.getActive())
                 .hiring(need.getHiring())
+                .child(need.getChild())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class NeedMapper {
                 .name(need.get().getName())
                 .hiring(need.get().getHiring())
                 .active(need.get().getActive())
+                .child(need.get().getChild())
                 .build();
     }
 }
