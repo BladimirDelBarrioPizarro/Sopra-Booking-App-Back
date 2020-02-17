@@ -42,16 +42,5 @@ public class ApiConfig {
     public HiringController hiringController(HiringService hiringService,EntityLinks entityLinks){
         return new HiringControllerImpl(hiringService,entityLinks);
     }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfig =  new CorsConfiguration();
-        corsConfig.addAllowedOrigin("http://localhost:3000");
-        corsConfig.setAllowedMethods(Arrays.asList("POST","GET","PUT","DELETE","OPTIONS"));
-        corsConfig.setAllowCredentials(true);
-        corsConfig.setAllowedHeaders(Arrays.asList("Authorization","Content-Type"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",corsConfig);
-        return source;
-    }
+    
 }
