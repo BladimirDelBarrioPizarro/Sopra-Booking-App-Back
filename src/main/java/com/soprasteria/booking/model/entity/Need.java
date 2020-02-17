@@ -1,10 +1,9 @@
 package com.soprasteria.booking.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
