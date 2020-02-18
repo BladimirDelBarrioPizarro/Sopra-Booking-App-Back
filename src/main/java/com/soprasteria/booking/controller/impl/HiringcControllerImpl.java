@@ -6,9 +6,13 @@ import com.soprasteria.booking.model.entity.Hiringc;
 import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Links;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.Objects;
 
 @Slf4j
 public class HiringcControllerImpl implements HiringcController {
@@ -28,4 +32,21 @@ public class HiringcControllerImpl implements HiringcController {
         entity.add(entityLinks.linkToItemResource(Hiringc.class, "/api/v1/hiringc"));
         return new ResponseEntity(entity, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<EntityModel<HiringcDTO>> findById(Long id) {
+        log.info(" -- GET /hiringc/{}",id);
+        EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.findById(id));
+        entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(entity.getContent().getId())));
+        return new ResponseEntity<>(entity,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> saveHiring(Hiringc hiringc) {
+        log.info(" -- POST /hiringc {}",hiringc.getName());
+        EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.saveHiringc(hiringc));
+        entity.add(entityLinks.linkToItemResource(Hiringc.class,Objects.requireNonNull(hiringc.getId())));
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+    }
 }
+

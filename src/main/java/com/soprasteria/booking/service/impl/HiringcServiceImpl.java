@@ -1,9 +1,8 @@
 package com.soprasteria.booking.service.impl;
 
 import com.soprasteria.booking.dao.HiringcDao;
-import com.soprasteria.booking.model.dto.HiringDTO;
 import com.soprasteria.booking.model.dto.HiringcDTO;
-import com.soprasteria.booking.model.mapper.HiringMapper;
+import com.soprasteria.booking.model.entity.Hiringc;
 import com.soprasteria.booking.model.mapper.HiringcMapper;
 import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +24,27 @@ public class HiringcServiceImpl implements HiringcService {
             return HiringcMapper.mapHiringcListToHiringcListDTO(hiringcDao.findAll());
         }catch (Exception ex){
             log.error(" -- ERROR GET /hiringsc {}", ex.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public HiringcDTO findById(Long id) {
+        try{
+            return HiringcMapper.mapHiringcOptionalToHiringcDTO(hiringcDao.findById(id));
+        }catch (Exception ex){
+            log.error(" -- ERROR GET /hiringsc {}",id);
+            return null;
+        }
+
+    }
+
+    @Override
+    public HiringcDTO saveHiringc(Hiringc hiringc) {
+        try{
+            return HiringcMapper.mapHiringcToHiringcDTO(hiringcDao.save(hiringc));
+        }catch (Exception ex){
+            log.error(" -- ERROR POST /hiringsc {} ",ex.getMessage());
             return null;
         }
     }
