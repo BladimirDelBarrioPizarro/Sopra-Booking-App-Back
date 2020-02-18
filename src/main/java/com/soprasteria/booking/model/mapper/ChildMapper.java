@@ -14,7 +14,7 @@ public class ChildMapper {
         return childList.stream().map(ChildMapper::mapChildToChildDTO).collect(Collectors.toList());
     }
 
-    private static ChildDTO mapChildToChildDTO(Child child) {
+    public static ChildDTO mapChildToChildDTO(Child child) {
         return  ChildDTO.builder()
                 .id(child.getId())
                 .name(child.getName())

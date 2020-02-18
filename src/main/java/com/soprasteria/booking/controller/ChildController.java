@@ -2,14 +2,13 @@ package com.soprasteria.booking.controller;
 
 import com.soprasteria.booking.model.dto.ChildDTO;
 
+import com.soprasteria.booking.model.entity.Child;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Links;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -21,6 +20,9 @@ public interface ChildController {
 
     @GetMapping(path = "/childs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<ChildDTO>> findById(@PathVariable("id") Long id);
+
+    @PostMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<EntityModel<Links>> saveChild(@RequestBody Child child);
 }
 
 

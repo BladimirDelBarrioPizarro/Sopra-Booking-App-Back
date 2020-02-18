@@ -8,6 +8,7 @@ import com.soprasteria.booking.service.ChildService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Links;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,17 +29,27 @@ public class ChildControllerImpl implements ChildController {
     @Override
     public ResponseEntity<CollectionModel<ChildDTO>> findAll() {
         log.info(" -- GET /childs");
-        CollectionModel<ChildDTO> childs = new CollectionModel(childService.findAll());
-        childs.add(entityLinks.linkToItemResource(Child.class, "/api/v1/childs"));
-        return new ResponseEntity(childs, HttpStatus.OK);
+        CollectionModel<ChildDTO> entity = new CollectionModel(childService.findAll());
+        entity.add(entityLinks.linkToItemResource(Child.class, "/api/v1/childs"));
+        return new ResponseEntity(entity, HttpStatus.OK);
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Override
     public ResponseEntity<EntityModel<ChildDTO>> findById(Long id) {
         log.info(" -- GET /childs/{}",id);
-        EntityModel<ChildDTO> childs = new EntityModel<>(childService.findById(id));
-        childs.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(childs.getContent()).getId()));
-        return new ResponseEntity<>(childs,HttpStatus.OK);
+        EntityModel<ChildDTO> entity = new EntityModel<>(childService.findById(id));
+        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(entity.getContent()).getId()));
+        return new ResponseEntity<>(entity,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> saveChild(Child child) {
+        log.info(" -- POST /child {}",child.getName());
+        EntityModel<ChildDTO> entity = new EntityModel<>(childService.saveChild(child));
+        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(entity.getContent().getId())));
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
 }
+
+

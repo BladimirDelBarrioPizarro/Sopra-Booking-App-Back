@@ -1,6 +1,7 @@
 package com.soprasteria.booking.service;
 
 import com.soprasteria.booking.model.dto.ChildDTO;
+import com.soprasteria.booking.model.entity.Child;
 import com.soprasteria.booking.service.dummy.ChildServiceDummy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,4 +34,14 @@ public class ChildServiceTestImpl {
         ChildDTO childDTO2 = childService.findById(1L);
         assert (childDTO2.getId().equals(childDTO.getId()));
     }
+
+    @Test
+    void saveChildTest(){
+        ChildDTO childDTO = ChildServiceDummy.childDTODummy();
+        Child child = ChildServiceDummy.childDummy();
+        when(childService.saveChild(any())).thenReturn(childDTO);
+        ChildDTO childDTO2 = childService.saveChild(child);
+        assert (childDTO2.getId().equals(childDTO.getId()));
+    }
 }
+

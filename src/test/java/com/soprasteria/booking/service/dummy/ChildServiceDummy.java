@@ -1,6 +1,7 @@
 package com.soprasteria.booking.service.dummy;
 
 import com.soprasteria.booking.model.dto.ChildDTO;
+import com.soprasteria.booking.model.entity.Child;
 
 
 import java.util.ArrayList;
@@ -22,6 +23,13 @@ public class ChildServiceDummy {
                 .build();
     }
 
-
+    public static Child childDummy(){
+        return Child.builder()
+                .id(1L)
+                .hiringc(new ArrayList<>())
+                .active(true)
+                .name("Test name")
+                .build();
+    }
 }
 
