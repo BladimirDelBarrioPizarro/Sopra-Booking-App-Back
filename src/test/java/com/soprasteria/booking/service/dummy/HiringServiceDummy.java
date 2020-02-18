@@ -4,12 +4,13 @@ import com.soprasteria.booking.model.dto.HiringDTO;
 import com.soprasteria.booking.model.entity.Hiring;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class HiringServiceDummy {
 
     public static List<HiringDTO> hiringDTOListDummy(){
-        return Arrays.asList(
+        return Collections.singletonList(
                 hiringDTODummy()
         );
     }
