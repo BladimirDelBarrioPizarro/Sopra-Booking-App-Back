@@ -50,6 +50,13 @@ public class ChildControllerImpl implements ChildController {
         entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(entity.getContent().getId())));
         return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
-}
 
+    @Override
+    public ResponseEntity<EntityModel<Links>> updateChild(Child child) {
+        log.info(" -- PUT /childs {}",child.getName());
+        EntityModel<ChildDTO> entity = new EntityModel<>(childService.updateChild(child));
+        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(child.getId())));
+        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+    }
+}
 

@@ -23,18 +23,16 @@ public interface ChildController {
 
     @PostMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveChild(@RequestBody Child child);
+
+    @PutMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<EntityModel<Links>> updateChild(@RequestBody Child child);
 }
 
 
 /*
-*  @GetMapping(path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<NeedDTO>> findById(@PathVariable("id") Long id);
+*
 
-    @PostMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> saveNeed(@RequestBody Need need);
 
-    @PutMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> updateNeed(@RequestBody Need need);
 
     @DeleteMapping( path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<Void> deleteNeed(@PathVariable("id") Long id);

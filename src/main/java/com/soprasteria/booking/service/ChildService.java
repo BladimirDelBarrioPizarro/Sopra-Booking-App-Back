@@ -10,4 +10,5 @@ public interface ChildService {
     List<ChildDTO> findAll();
     ChildDTO findById(Long id);
     ChildDTO saveChild(Child child);
+    ChildDTO updateChild(Child child);
 }

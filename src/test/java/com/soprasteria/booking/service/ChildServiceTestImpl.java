@@ -43,5 +43,16 @@ public class ChildServiceTestImpl {
         ChildDTO childDTO2 = childService.saveChild(child);
         assert (childDTO2.getId().equals(childDTO.getId()));
     }
+
+    @Test
+    void updateChildTest(){
+        ChildDTO childDTO = ChildServiceDummy.childDTODummy();
+        childDTO.setActive(false);
+        Child child = ChildServiceDummy.childDummy();
+        child.setActive(false);
+        when(childService.updateChild(any())).thenReturn(childDTO);
+        ChildDTO childDTO2 = childService.updateChild(child);
+        assert (childDTO2.getActive().equals(childDTO.getActive()));
+    }
 }
 

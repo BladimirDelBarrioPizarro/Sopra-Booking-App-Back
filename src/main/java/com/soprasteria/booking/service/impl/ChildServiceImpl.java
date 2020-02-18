@@ -47,4 +47,14 @@ public class ChildServiceImpl implements ChildService {
             return null;
         }
     }
+
+    @Override
+    public ChildDTO updateChild(Child child) {
+        try{
+            return ChildMapper.mapChildToChildDTO(childDao.save(child));
+        }catch (Exception ex){
+            log.error(" -- ERROR PUT /childs {} ",ex.getMessage());
+            return null;
+        }
+    }
 }
