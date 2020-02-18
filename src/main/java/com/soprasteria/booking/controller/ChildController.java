@@ -26,16 +26,7 @@ public interface ChildController {
 
     @PutMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> updateChild(@RequestBody Child child);
+
+    @DeleteMapping(path = "/childs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<Void> deleteChild(@PathVariable("id") Long id);
 }
-
-
-/*
-*
-
-
-
-    @DeleteMapping( path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<Void> deleteNeed(@PathVariable("id") Long id);
-*
-*
-* */

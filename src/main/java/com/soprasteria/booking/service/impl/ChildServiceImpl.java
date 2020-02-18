@@ -57,4 +57,13 @@ public class ChildServiceImpl implements ChildService {
             return null;
         }
     }
+
+    @Override
+    public void deleteChild(Long id) {
+        try{
+            childDao.deleteById(id);
+        }catch (Exception ex){
+            log.error(" -- ERROR DELETE /childs {} ",id);
+        }
+    }
 }

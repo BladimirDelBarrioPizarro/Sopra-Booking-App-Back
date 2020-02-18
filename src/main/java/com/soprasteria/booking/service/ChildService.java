@@ -11,4 +11,5 @@ public interface ChildService {
     ChildDTO findById(Long id);
     ChildDTO saveChild(Child child);
     ChildDTO updateChild(Child child);
+    void deleteChild(Long id);
 }

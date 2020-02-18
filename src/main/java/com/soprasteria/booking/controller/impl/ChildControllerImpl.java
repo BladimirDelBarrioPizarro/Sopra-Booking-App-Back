@@ -58,5 +58,15 @@ public class ChildControllerImpl implements ChildController {
         entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(child.getId())));
         return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
-}
 
+    @Override
+    public ResponseEntity<Void> deleteChild(Long id) {
+        log.info(" -- DELETE /childs {}",id);
+        ChildDTO childDTO = childService.findById(id);
+        if(childDTO == null){
+            return ResponseEntity.noContent().build();
+        }
+        childService.deleteChild(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+}
