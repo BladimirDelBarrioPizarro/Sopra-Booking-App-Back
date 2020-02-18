@@ -2,9 +2,7 @@ package com.soprasteria.booking.controller.impl;
 
 import com.soprasteria.booking.controller.ChildController;
 import com.soprasteria.booking.model.dto.ChildDTO;
-import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Child;
-import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.service.ChildService;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.EntityLinks;
@@ -22,8 +20,8 @@ public class ChildControllerImpl implements ChildController {
     }
 
     @Override
-    public ResponseEntity<CollectionModel<Child>> findAll() {
-        CollectionModel<Child> childs = new CollectionModel(childService.findAll());
+    public ResponseEntity<CollectionModel<ChildDTO>> findAll() {
+        CollectionModel<ChildDTO> childs = new CollectionModel(childService.findAll());
         childs.add(entityLinks.linkToItemResource(Child.class, "/api/v1/childs"));
         return new ResponseEntity(childs, HttpStatus.OK);
     }
