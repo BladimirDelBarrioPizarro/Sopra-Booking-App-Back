@@ -55,4 +55,14 @@ public class HiringcServiceTestImpl {
         HiringcDTO hiringcDTO2 = hiringcService.updateHiringc(hiringc);
         assert (hiringcDTO2.getActive().equals(hiringcDTO.getActive()));
     }
+
+    @Test
+    void deleteHiringcTest(){
+        Hiringc hiringc = HiringcServiceDummy.hiringcDummy();
+        hiringcService.saveHiringc(hiringc);
+        hiringcService.deleteHiringc(hiringc.getId());
+        HiringcDTO hiringcDTO = hiringcService.findById(hiringc.getId());
+        assert (hiringcDTO == null);
+    }
 }
+
