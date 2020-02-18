@@ -1,6 +1,6 @@
 package com.soprasteria.booking.service;
 
-import com.soprasteria.booking.model.dto.HiringDTO;
+
 import com.soprasteria.booking.model.dto.HiringcDTO;
 import com.soprasteria.booking.model.entity.Hiringc;
 import com.soprasteria.booking.service.dummy.HiringServiceDummy;
@@ -43,5 +43,16 @@ public class HiringcServiceTestImpl {
         when(hiringcService.saveHiringc(any())).thenReturn(hiringcDTO);
         HiringcDTO hiringcDTO2 = hiringcService.saveHiringc(hiringc);
         assert (hiringcDTO.getId().equals(hiringcDTO2.getId()));
+    }
+
+    @Test
+    void updateHiringcTest(){
+        HiringcDTO hiringcDTO = HiringcServiceDummy.hiringcDTODummy();
+        hiringcDTO.setActive(false);
+        Hiringc hiringc = HiringcServiceDummy.hiringcDummy();
+        hiringc.setActive(false);
+        when(hiringcService.updateHiringc(any())).thenReturn(hiringcDTO);
+        HiringcDTO hiringcDTO2 = hiringcService.updateHiringc(hiringc);
+        assert (hiringcDTO2.getActive().equals(hiringcDTO.getActive()));
     }
 }
