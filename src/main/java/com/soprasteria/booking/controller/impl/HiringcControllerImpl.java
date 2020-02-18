@@ -35,26 +35,37 @@ public class HiringcControllerImpl implements HiringcController {
 
     @Override
     public ResponseEntity<EntityModel<HiringcDTO>> findById(Long id) {
-        log.info(" -- GET /hiringc/{}",id);
+        log.info(" -- GET /hiringc/{}", id);
         EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.findById(id));
         entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(entity.getContent().getId())));
-        return new ResponseEntity<>(entity,HttpStatus.OK);
+        return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<EntityModel<Links>> saveHiring(Hiringc hiringc) {
-        log.info(" -- POST /hiringc {}",hiringc.getName());
+        log.info(" -- POST /hiringc {}", hiringc.getName());
         EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.saveHiringc(hiringc));
-        entity.add(entityLinks.linkToItemResource(Hiringc.class,Objects.requireNonNull(hiringc.getId())));
-        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(hiringc.getId())));
+        return new ResponseEntity(entity.getLinks(), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<EntityModel<Links>> updateHiringc(Hiringc hiringc) {
-        log.info(" -- PUT /hiringc {}",hiringc.getName());
+        log.info(" -- PUT /hiringc {}", hiringc.getName());
         EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.updateHiringc(hiringc));
-        entity.add(entityLinks.linkToItemResource(Hiringc.class,Objects.requireNonNull(hiringc.getId())));
-        return  new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(hiringc.getId())));
+        return new ResponseEntity(entity.getLinks(), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteHiringc(Long id) {
+        log.info(" -- DELETE /hiringc {}",id);
+        HiringcDTO hiringcDTO = hiringcService.findById(id);
+        if(hiringcDTO == null){
+            return ResponseEntity.noContent().build();
+        }
+        hiringcService.deleteHiringc(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
 

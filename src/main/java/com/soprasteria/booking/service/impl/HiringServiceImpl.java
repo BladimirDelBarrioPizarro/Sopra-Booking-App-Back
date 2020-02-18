@@ -53,7 +53,7 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
         }catch (Exception ex){
-            log.error(" -- ERROR POST /hirings {} ",ex.getMessage());
+            log.error(" -- ERROR DELETE /hirings {} ",ex.getMessage());
             return null;
         }
     }

@@ -10,4 +10,5 @@ public interface HiringcService {
     HiringcDTO findById(Long id);
     HiringcDTO saveHiringc(Hiringc hiringc);
     HiringcDTO updateHiringc(Hiringc hiringc);
+    void deleteHiringc(Long id);
 }

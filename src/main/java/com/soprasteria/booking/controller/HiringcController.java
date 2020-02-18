@@ -26,13 +26,14 @@ public interface HiringcController {
 
     @PutMapping(path = "/hiringc",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> updateHiringc(@RequestBody Hiringc hiringc);
+
+    @DeleteMapping(path = "/hiringc/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<Void> deleteHiringc(@PathVariable("id") Long id);
 }
 
 
 
 
-/*
-*
 
 
 
@@ -40,12 +41,3 @@ public interface HiringcController {
 
 
 
-    @DeleteMapping(path = "/hiring/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<Void> deleteHiring(@PathVariable("id") Long id);
-*
-*
-*
-*
-*
-*
-* */

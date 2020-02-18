@@ -58,5 +58,13 @@ public class HiringcServiceImpl implements HiringcService {
             return null;
         }
     }
-}
 
+    @Override
+    public void deleteHiringc(Long id) {
+        try{
+            hiringcDao.deleteById(id);
+        }catch (Exception ex){
+            log.error(" -- ERROR DELETE /hirings {} ",ex.getMessage());
+        }
+    }
+}
