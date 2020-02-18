@@ -13,6 +13,6 @@ public class ChildDTO {
     private Long id;
     private String name;
     private Boolean active;
-    private List<Hiringc> hiring;
+    private List<Hiringc> hiringc;
 
 }

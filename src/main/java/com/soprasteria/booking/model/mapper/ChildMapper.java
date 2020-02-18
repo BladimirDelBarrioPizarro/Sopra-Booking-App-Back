@@ -3,8 +3,9 @@ package com.soprasteria.booking.model.mapper;
 import com.soprasteria.booking.model.dto.ChildDTO;
 import com.soprasteria.booking.model.entity.Child;
 
-import java.util.Collections;
+
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ChildMapper {
@@ -17,8 +18,17 @@ public class ChildMapper {
         return  ChildDTO.builder()
                 .id(child.getId())
                 .name(child.getName())
-                .hiring(child.getHiringc())
+                .hiringc(child.getHiringc())
                 .active(child.getActive())
+                .build();
+    }
+
+    public static ChildDTO mapOptionalChildToChildDTO(Optional<Child> optionalChild) {
+        return ChildDTO.builder()
+                .id(optionalChild.get().getId())
+                .name(optionalChild.get().getName())
+                .hiringc(optionalChild.get().getHiringc())
+                .active(true)
                 .build();
     }
 }

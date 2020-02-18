@@ -26,4 +26,14 @@ public class ChildServiceImpl implements ChildService {
             return null;
         }
     }
+
+    @Override
+    public ChildDTO findById(Long id) {
+        try{
+            return ChildMapper.mapOptionalChildToChildDTO(childDao.findById(id));
+        }catch (Exception ex){
+            log.error(" -- ERROR GET /childs {} ",id);
+            return null;
+        }
+    }
 }

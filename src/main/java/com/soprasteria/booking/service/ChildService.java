@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ChildService {
     List<ChildDTO> findAll();
+    ChildDTO findById(Long id);
 }

@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,5 +24,13 @@ public class ChildServiceTestImpl {
         when(childService.findAll()).thenReturn(childDTOList);
         List<ChildDTO> childDTOList2 = childService.findAll();
         assert (childDTOList2.size() > 0);
+    }
+
+    @Test
+    void findBtyIdTest(){
+        ChildDTO childDTO = ChildServiceDummy.childDTODummy();
+        when(childService.findById(any())).thenReturn(childDTO);
+        ChildDTO childDTO2 = childService.findById(1L);
+        assert (childDTO2.getId().equals(childDTO.getId()));
     }
 }
