@@ -54,5 +54,14 @@ public class ChildServiceTestImpl {
         ChildDTO childDTO2 = childService.updateChild(child);
         assert (childDTO2.getActive().equals(childDTO.getActive()));
     }
+
+    @Test
+    void deleteChildTest(){
+        Child child = ChildServiceDummy.childDummy();
+        childService.saveChild(child);
+        childService.deleteChild(child.getId());
+        ChildDTO childDTO = childService.findById(child.getId());
+        assert (childDTO == null);
+    }
 }
 
