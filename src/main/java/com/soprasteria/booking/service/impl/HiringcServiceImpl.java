@@ -48,5 +48,15 @@ public class HiringcServiceImpl implements HiringcService {
             return null;
         }
     }
+
+    @Override
+    public HiringcDTO updateHiringc(Hiringc hiringc) {
+        try{
+            return HiringcMapper.mapHiringcToHiringcDTO(hiringcDao.save(hiringc));
+        }catch (Exception ex){
+            log.error(" -- ERROR PUT /hiringsc {} ",ex.getMessage());
+            return null;
+        }
+    }
 }
 

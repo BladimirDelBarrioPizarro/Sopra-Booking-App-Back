@@ -48,5 +48,14 @@ public class HiringcControllerImpl implements HiringcController {
         entity.add(entityLinks.linkToItemResource(Hiringc.class,Objects.requireNonNull(hiringc.getId())));
         return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<EntityModel<Links>> updateHiringc(Hiringc hiringc) {
+        log.info(" -- PUT /hiringc {}",hiringc.getName());
+        EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.updateHiringc(hiringc));
+        entity.add(entityLinks.linkToItemResource(Hiringc.class,Objects.requireNonNull(hiringc.getId())));
+        return  new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+    }
 }
+
 

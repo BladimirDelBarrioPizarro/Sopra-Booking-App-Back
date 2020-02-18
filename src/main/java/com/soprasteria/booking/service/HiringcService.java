@@ -9,4 +9,5 @@ public interface HiringcService {
     List<HiringcDTO> findAll();
     HiringcDTO findById(Long id);
     HiringcDTO saveHiringc(Hiringc hiringc);
+    HiringcDTO updateHiringc(Hiringc hiringc);
 }
