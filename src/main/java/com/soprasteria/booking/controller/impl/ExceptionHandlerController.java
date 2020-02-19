@@ -4,6 +4,7 @@ import com.soprasteria.booking.model.dto.HttpErrorDTO;
 import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
 import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindById;
 import com.soprasteria.booking.model.exceptions.HandleExceptionNeedSave;
+import com.soprasteria.booking.model.exceptions.HandleExceptionNeedUpdate;
 import com.soprasteria.booking.model.mapper.HttpErrorMapper;
 import com.soprasteria.booking.model.messages.ErrorMessages;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(HandleExceptionNeedFindById.class)
     public ResponseEntity<HttpErrorDTO> handleExceptionNeedFindById(Exception ex) {
-        log.error(" -- ERROR SOPRA STERIA BOOKING : Needs not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
@@ -55,10 +56,19 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(HandleExceptionNeedSave.class)
     public ResponseEntity<HttpErrorDTO> handleExceptionSaveNeed(Exception ex) {
-        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not save {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_SAVE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
+
+    @ExceptionHandler(HandleExceptionNeedUpdate.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionUpdateNeed(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not update {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
 }
