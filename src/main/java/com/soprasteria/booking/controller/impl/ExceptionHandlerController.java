@@ -126,6 +126,18 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_DELETE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+    // Child HandleController
+
+    @ExceptionHandler(HandleExceptionChildFindAll.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionChildFindAll(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Children not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
+
 }
 
 
