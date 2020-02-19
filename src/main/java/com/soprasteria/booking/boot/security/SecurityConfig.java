@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                     .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-        http .csrf().disable();
+        http.csrf().disable();
         http.headers().frameOptions().disable();
     }
 }

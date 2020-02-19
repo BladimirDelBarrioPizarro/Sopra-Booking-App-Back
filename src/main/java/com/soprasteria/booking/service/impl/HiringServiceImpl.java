@@ -5,6 +5,7 @@ import com.soprasteria.booking.model.dto.HiringDTO;
 import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindAll;
 import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindById;
+import com.soprasteria.booking.model.exceptions.HandleExceptionHiringSave;
 import com.soprasteria.booking.model.mapper.HiringMapper;
 import com.soprasteria.booking.service.HiringService;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class HiringServiceImpl implements HiringService {
             return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
         }catch (Exception ex){
             log.error(" -- ERROR POST /hirings {} ",ex.getMessage());
-            return null;
+            throw new HandleExceptionHiringSave(ex);
         }
     }
 
