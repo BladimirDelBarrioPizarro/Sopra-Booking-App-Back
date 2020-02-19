@@ -3,13 +3,13 @@ package com.soprasteria.booking.service.impl;
 import com.soprasteria.booking.dao.NeedDao;
 import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Need;
+import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
 import com.soprasteria.booking.model.mapper.NeedMapper;
 import com.soprasteria.booking.service.NeedService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -28,11 +28,10 @@ public class NeedServiceImpl implements NeedService {
     public List<NeedDTO> findAll(Pageable pageable) {
         pageable = pageRequest(pageable);
         try{
-            List<Need> needDTOS = (List<Need>) needDao.findAll();
             return NeedMapper.mapNeedListToNeedDTO(needDao.findAll(pageable).stream().collect(Collectors.toList()));
         }catch (Exception ex) {
             log.error(" -- ERROR GET/needs {}", ex.getMessage());
-            return null;
+            throw new HandleExceptionNeedFindAll(ex);
         }
     }
 
@@ -41,7 +40,7 @@ public class NeedServiceImpl implements NeedService {
         try{
            return NeedMapper.mapNeedOptionalToNeedDTO(needDao.findById(id));
         }catch (Exception ex){
-            log.error(" -- ERROR GET /needs/{} Message:{}",id,ex.getMessage());
+            log.error(" -- ERROR GET /needs/{}",id);
             //throw new HandleExceptionfindNeedById(ex);
             return null;
         }

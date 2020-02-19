@@ -3,7 +3,6 @@ package com.soprasteria.booking.service;
 
 import com.soprasteria.booking.model.dto.HiringcDTO;
 import com.soprasteria.booking.model.entity.Hiringc;
-import com.soprasteria.booking.service.dummy.HiringServiceDummy;
 import com.soprasteria.booking.service.dummy.HiringcServiceDummy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
