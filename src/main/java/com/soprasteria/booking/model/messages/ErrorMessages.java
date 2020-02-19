@@ -19,7 +19,8 @@ public enum ErrorMessages {
 
     ERROR_HANDLE_CHILD_FIND_ALL(111,"Error in the extraction of childs"),
     ERROR_HANDLE_CHILD_FIND_BYID(112,"Error in the extraction of the selected child"),
-    ERROR_HANDLE_CHILD_SAVE(113,"Error saving the selected child");
+    ERROR_HANDLE_CHILD_SAVE(113,"Error saving the selected child"),
+    ERROR_HANDLE_CHILD_UPDATE(114,"Error modifying the selected child");
 
     private Integer code;
     private String message;

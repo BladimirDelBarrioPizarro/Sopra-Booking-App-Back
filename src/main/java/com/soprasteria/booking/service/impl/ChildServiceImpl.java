@@ -6,6 +6,7 @@ import com.soprasteria.booking.model.entity.Child;
 import com.soprasteria.booking.model.exceptions.HandleExceptionChildFindAll;
 import com.soprasteria.booking.model.exceptions.HandleExceptionChildFindById;
 import com.soprasteria.booking.model.exceptions.HandleExceptionChildSave;
+import com.soprasteria.booking.model.exceptions.HandleExceptionChildUpdate;
 import com.soprasteria.booking.model.mapper.ChildMapper;
 import com.soprasteria.booking.service.ChildService;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +58,7 @@ public class ChildServiceImpl implements ChildService {
             return ChildMapper.mapChildToChildDTO(childDao.save(child));
         }catch (Exception ex){
             log.error(" -- ERROR PUT /childs {} ",ex.getMessage());
-            return null;
+            throw new HandleExceptionChildUpdate(ex);
         }
     }
 
