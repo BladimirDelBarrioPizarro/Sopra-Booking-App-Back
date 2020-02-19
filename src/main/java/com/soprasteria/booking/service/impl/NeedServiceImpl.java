@@ -4,6 +4,7 @@ import com.soprasteria.booking.dao.NeedDao;
 import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
+import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindById;
 import com.soprasteria.booking.model.mapper.NeedMapper;
 import com.soprasteria.booking.service.NeedService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,8 +42,7 @@ public class NeedServiceImpl implements NeedService {
            return NeedMapper.mapNeedOptionalToNeedDTO(needDao.findById(id));
         }catch (Exception ex){
             log.error(" -- ERROR GET /needs/{}",id);
-            //throw new HandleExceptionfindNeedById(ex);
-            return null;
+            throw new HandleExceptionNeedFindById(ex);
         }
     }
 

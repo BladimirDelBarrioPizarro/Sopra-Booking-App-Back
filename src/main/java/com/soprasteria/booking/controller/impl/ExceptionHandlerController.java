@@ -2,6 +2,7 @@ package com.soprasteria.booking.controller.impl;
 
 import com.soprasteria.booking.model.dto.HttpErrorDTO;
 import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
+import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindById;
 import com.soprasteria.booking.model.mapper.HttpErrorMapper;
 import com.soprasteria.booking.model.messages.ErrorMessages;
 import lombok.extern.slf4j.Slf4j;
@@ -40,4 +41,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+
+    @ExceptionHandler(HandleExceptionNeedFindById.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionNeedFindById(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
 }
+

@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum ErrorMessages {
 
-    ERROR_HANDLE_NEED_FIND_ALL(101,"Error in the extraction of needs");
+    ERROR_HANDLE_NEED_FIND_ALL(101,"Error in the extraction of needs"),
+    ERROR_HANDLE_NEED_FIND_BYID(102,"Error in the extraction of the selected need");
 
     private Integer code;
     private String message;
