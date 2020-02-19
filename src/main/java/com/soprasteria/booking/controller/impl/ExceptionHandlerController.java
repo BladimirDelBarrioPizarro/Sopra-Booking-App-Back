@@ -161,7 +161,16 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         log.error(" -- ERROR SOPRA STERIA BOOKING : Child not updated {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_UPDATE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
-                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_UPDATE.getMessage(),getCurrentRequest().getMethod(),
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_UPDATE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getMessage(),new Timestamp(new Date().getTime()));
+    }
+
+    @ExceptionHandler(HandleExceptionChildDelete.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionChildDelete(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Child not deleted {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_DELETE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_DELETE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
@@ -170,4 +179,3 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
 
 
-//
