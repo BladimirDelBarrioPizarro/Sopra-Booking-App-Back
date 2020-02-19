@@ -12,6 +12,6 @@ public class HttpErrorDTO {
     private String url;
     private String message;
     private String method;
-    private Throwable cause;
+    private String cause;
     private Timestamp date;
 }

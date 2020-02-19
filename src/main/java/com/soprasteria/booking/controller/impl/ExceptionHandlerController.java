@@ -40,7 +40,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
 
@@ -50,7 +50,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionNeedSave.class)
@@ -59,7 +59,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_SAVE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionNeedUpdate.class)
@@ -68,7 +68,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionNeedDelete.class)
@@ -77,7 +77,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_DELETE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_DELETE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     //Hiring handleController
@@ -88,7 +88,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionHiringFindById.class)
@@ -97,7 +97,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionHiringSave.class)
@@ -106,7 +106,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_SAVE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionHiringUpdate.class)
@@ -115,7 +115,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionHiringDelete.class)
@@ -124,7 +124,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_DELETE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_DELETE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     // Child HandleController
@@ -135,7 +135,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionChildFindById.class)
@@ -144,7 +144,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
     @ExceptionHandler(HandleExceptionChildSave.class)
@@ -153,7 +153,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_SAVE.getMessage(),getCurrentRequest().getMethod(),
-                ex.getCause(),new Timestamp(new Date().getTime()));
+                ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
 }
