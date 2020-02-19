@@ -32,6 +32,8 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return servletRequest;
     }
 
+    //Needs handleController
+
     @ExceptionHandler(HandleExceptionNeedFindAll.class)
     public ResponseEntity<HttpErrorDTO> handleExceptionNeedFindAll(Exception ex) {
         log.error(" -- ERROR SOPRA STERIA BOOKING : Needs not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
@@ -77,8 +79,20 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_DELETE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+    //Hiring handleController
+
+    @ExceptionHandler(HandleExceptionHiringFindAll.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionHiringFindAll(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Hirings not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
 }
 
 
 
 
+//HandleExceptionHiringFindAll

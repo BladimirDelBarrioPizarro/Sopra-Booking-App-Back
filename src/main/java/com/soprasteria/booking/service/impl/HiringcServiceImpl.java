@@ -3,6 +3,7 @@ package com.soprasteria.booking.service.impl;
 import com.soprasteria.booking.dao.HiringcDao;
 import com.soprasteria.booking.model.dto.HiringcDTO;
 import com.soprasteria.booking.model.entity.Hiringc;
+import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindAll;
 import com.soprasteria.booking.model.mapper.HiringcMapper;
 import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class HiringcServiceImpl implements HiringcService {
             return HiringcMapper.mapHiringcListToHiringcListDTO(hiringcDao.findAll());
         }catch (Exception ex){
             log.error(" -- ERROR GET /hiringsc {}", ex.getMessage());
-            return null;
+            throw new HandleExceptionHiringFindAll(ex);
         }
     }
 
