@@ -17,7 +17,8 @@ public enum ErrorMessages {
     ERROR_HANDLE_HIRING_UPDATE(109,"Error modifying the selected hiring"),
     ERROR_HANDLE_HIRING_DELETE(110,"Error deleting the selected hiring"),
 
-    ERROR_HANDLE_CHILD_FIND_ALL(111,"Error in the extraction of childs");
+    ERROR_HANDLE_CHILD_FIND_ALL(111,"Error in the extraction of childs"),
+    ERROR_HANDLE_CHILD_FIND_BYID(112,"Error in the extraction of the selected child");
 
     private Integer code;
     private String message;
