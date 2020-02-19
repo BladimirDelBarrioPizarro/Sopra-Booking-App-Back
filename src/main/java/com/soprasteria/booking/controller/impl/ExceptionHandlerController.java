@@ -90,9 +90,18 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+    @ExceptionHandler(HandleExceptionHiringFindById.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionHiringFindById(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Hiring not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
 }
 
 
 
 
-//HandleExceptionHiringFindAll
+//
