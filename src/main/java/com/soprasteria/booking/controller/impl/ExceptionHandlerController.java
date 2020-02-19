@@ -108,6 +108,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_SAVE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+    @ExceptionHandler(HandleExceptionHiringUpdate.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionHiringUpdate(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Hiring not update {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
 }
 
 

@@ -6,6 +6,7 @@ import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindAll;
 import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindById;
 import com.soprasteria.booking.model.exceptions.HandleExceptionHiringSave;
+import com.soprasteria.booking.model.exceptions.HandleExceptionHiringUpdate;
 import com.soprasteria.booking.model.mapper.HiringMapper;
 import com.soprasteria.booking.service.HiringService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,7 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringOptionalToHiringDTO(hiringDao.findById(id));
         }catch (Exception ex){
-            log.error(" -- ERROR GET /hirings {} Message: {}",id,ex.getMessage());
+            log.error(" -- ERROR GET /hirings {} ",id);
             throw new HandleExceptionHiringFindById(ex);
         }
     }
@@ -56,8 +57,8 @@ public class HiringServiceImpl implements HiringService {
         try{
             return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
         }catch (Exception ex){
-            log.error(" -- ERROR DELETE /hirings {} ",ex.getMessage());
-            return null;
+            log.error(" -- ERROR PUT /hirings {} ",ex.getMessage());
+            throw new HandleExceptionHiringUpdate(ex);
         }
     }
 
@@ -66,7 +67,7 @@ public class HiringServiceImpl implements HiringService {
         try{
             hiringDao.deleteById(id);
         }catch (Exception ex){
-            log.error(" -- ERROR DELETE /hiring {}",ex.getMessage());
+            log.error(" -- ERROR DELETE /hiring {}",id);
         }
     }
 }

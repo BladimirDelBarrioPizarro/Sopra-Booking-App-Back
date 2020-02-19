@@ -54,7 +54,7 @@ public class HiringControllerImpl implements HiringController {
     @Override
     public ResponseEntity<EntityModel<Links>> updateHiring(Hiring hiring) {
         log.info(" -- PUT /hiring {}",hiring.getName());
-        EntityModel<HiringDTO> entity = new EntityModel<>(hiringService.saveHiring(hiring));
+        EntityModel<HiringDTO> entity = new EntityModel<>(hiringService.updateHiring(hiring));
         entity.add(entityLinks.linkToItemResource(Hiring.class,Objects.requireNonNull(hiring.getId())));
         return  new ResponseEntity(entity.getLinks(),HttpStatus.OK);
     }
