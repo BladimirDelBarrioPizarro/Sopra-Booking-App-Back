@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @Builder
@@ -19,8 +20,31 @@ public class Hiringc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
+    private Timestamp registrationDate;
+    private String companyHires;
+    private String incorporationModality;
+    private String requestTeam;
+    private String teamOffer;
+    private String recruiter;
+    private String recruiterSource;
+    private String marketStall;
+    private String ambit;
+    private String agency;
+    private String client;
     private String name;
-    @Column(name = "active")
+    private Timestamp incorporationDate;
+    private String exceptions;
+    private String indefiniteContact;
+    private String category;
+    private String offerValidation;
+    private Integer offer1;
+    private Integer counterOffer2;
+    private String reasonRejectionOffer;
+    private String validated;
+    private String employeeWeb;
+    private String observations;
+    private String resourceProfitability;
+    private String directSelection;
+    private String outSourcing;
     private Boolean active;
 }
