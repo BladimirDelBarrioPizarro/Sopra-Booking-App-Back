@@ -3,10 +3,7 @@ package com.soprasteria.booking.service.impl;
 import com.soprasteria.booking.dao.HiringcDao;
 import com.soprasteria.booking.model.dto.HiringcDTO;
 import com.soprasteria.booking.model.entity.Hiringc;
-import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindAll;
-import com.soprasteria.booking.model.exceptions.HandleExceptionHiringFindById;
-import com.soprasteria.booking.model.exceptions.HandleExceptionHiringSave;
-import com.soprasteria.booking.model.exceptions.HandleExceptionHiringUpdate;
+import com.soprasteria.booking.model.exceptions.*;
 import com.soprasteria.booking.model.mapper.HiringcMapper;
 import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
@@ -69,6 +66,7 @@ public class HiringcServiceImpl implements HiringcService {
             hiringcDao.deleteById(id);
         }catch (Exception ex){
             log.error(" -- ERROR DELETE /hirings {} ",id);
+            throw new HandleExceptionHiringDelete(ex);
         }
     }
 }
