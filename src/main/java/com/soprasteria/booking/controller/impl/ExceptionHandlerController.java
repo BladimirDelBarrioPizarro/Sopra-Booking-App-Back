@@ -147,6 +147,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
 
+    @ExceptionHandler(HandleExceptionChildSave.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionChildSave(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Child not save {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_SAVE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
+
 }
 
 
