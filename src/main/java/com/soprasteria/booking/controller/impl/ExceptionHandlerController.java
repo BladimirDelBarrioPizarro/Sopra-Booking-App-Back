@@ -1,10 +1,7 @@
 package com.soprasteria.booking.controller.impl;
 
 import com.soprasteria.booking.model.dto.HttpErrorDTO;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindById;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedSave;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedUpdate;
+import com.soprasteria.booking.model.exceptions.*;
 import com.soprasteria.booking.model.mapper.HttpErrorMapper;
 import com.soprasteria.booking.model.messages.ErrorMessages;
 import lombok.extern.slf4j.Slf4j;
@@ -71,6 +68,17 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_UPDATE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getCause(),new Timestamp(new Date().getTime()));
     }
+
+    @ExceptionHandler(HandleExceptionNeedDelete.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionDeleteNeed(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Need not deleted {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_DELETE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_DELETE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getCause(),new Timestamp(new Date().getTime()));
+    }
 }
+
+
 
 

@@ -3,10 +3,7 @@ package com.soprasteria.booking.service.impl;
 import com.soprasteria.booking.dao.NeedDao;
 import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Need;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindAll;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedFindById;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedSave;
-import com.soprasteria.booking.model.exceptions.HandleExceptionNeedUpdate;
+import com.soprasteria.booking.model.exceptions.*;
 import com.soprasteria.booking.model.mapper.NeedMapper;
 import com.soprasteria.booking.service.NeedService;
 import lombok.extern.slf4j.Slf4j;
@@ -75,6 +72,7 @@ public class NeedServiceImpl implements NeedService {
             needDao.deleteById(id);
         }catch (Exception ex){
             log.error(" -- ERROR DELETE /needs {}",ex.getMessage());
+            throw new HandleExceptionNeedDelete(ex);
         }
     }
 
