@@ -31,7 +31,7 @@ public class Need implements Serializable {
     private String state;
     private String recruiter;
     private Timestamp openingDate;
-    private String pipelDays;
+    private Integer pipelDays;
     private String agency;
     private String client;
     private String hiringManage;
