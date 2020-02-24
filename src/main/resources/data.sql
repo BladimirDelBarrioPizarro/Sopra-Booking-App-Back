@@ -47,7 +47,7 @@ CREATE TABLE public.need (
         name character varying(100) NOT NULL,
         id_offer character varying(100) NOT NULL,
         year integer NOT NULL,
-        creation_week TIMESTAMP,
+        creation_week integer NOT NULL,
         code character varying(100) NOT NULL,
         month character varying(100) NOT NULL,
         id_seq character varying(100) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE public.child (
         name character varying(100) NOT NULL,
         id_offer character varying(100) NOT NULL,
         year integer NOT NULL,
-        creation_week TIMESTAMP,
+        creation_week integer NOT NULL,
         code character varying(100) NOT NULL,
         month character varying(100) NOT NULL,
         id_seq character varying(100) NOT NULL,
@@ -216,13 +216,13 @@ VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
 INSERT INTO need (name,id_offer,year,creation_week,code,month,id_seq,city,position,state,recruiter,opening_date,pipel_days,
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
                   open_days,closing_reason,active)
-VALUES ('ING','m.1.35',2020,CURRENT_TIMESTAMP,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'SOPRA NORUEGA',
+VALUES ('ING','m.1.35',2020,1,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'SOPRA NORUEGA',
        'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',true);
 
 INSERT INTO need (name,id_offer,year,creation_week,code,month,id_seq,city,position,state,recruiter,opening_date,pipel_days,
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
                   open_days,closing_reason,active)
-VALUES ('PELAYO','m.1.35',2020,CURRENT_TIMESTAMP,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'PELAYO MADRID',
+VALUES ('PELAYO','m.1.35',2020,1,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'PELAYO MADRID',
        'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',true);
 
 
@@ -300,13 +300,13 @@ VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
 INSERT INTO child (name,id_offer,year,creation_week,code,month,id_seq,city,position,state,recruiter,opening_date,pipel_days,
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
                   open_days,closing_reason,active)
-VALUES ('ING','m.1.35',2020,CURRENT_TIMESTAMP,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'SOPRA NORUEGA',
+VALUES ('ING','m.1.35',2020,1,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'SOPRA NORUEGA',
        'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',true);
 
 INSERT INTO child (name,id_offer,year,creation_week,code,month,id_seq,city,position,state,recruiter,opening_date,pipel_days,
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
                   open_days,closing_reason,active)
-VALUES ('PELAYO','m.1.35',2020,CURRENT_TIMESTAMP,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'PELAYO MADRID',
+VALUES ('PELAYO','m.1.35',2020,1,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'PELAYO MADRID',
        'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',true);
 
 

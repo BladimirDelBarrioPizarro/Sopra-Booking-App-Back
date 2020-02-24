@@ -22,7 +22,7 @@ public class Need implements Serializable {
     private String name;
     private String idOffer;
     private Integer year;
-    private Timestamp creationWeek;
+    private Integer creationWeek;
     private String code;
     private String month;
     private String idSeq;
