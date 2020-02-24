@@ -23,17 +23,19 @@ public class HiringcDTO {
     private String name;
     private Timestamp incorporationDate;
     private String exceptions;
-    private String indefiniteContact;
+    private String indefiniteContract;
     private String category;
     private String offerValidation;
-    private Integer offer1;
-    private Integer counterOffer2;
+    private Float offer1;
+    private Float counterOffer2;
+    private String variable;
+    private String offerStatus;
     private String reasonRejectionOffer;
     private String validated;
     private String employeeWeb;
     private String observations;
     private String resourceProfitability;
-    private String directSelection;
-    private String outSourcing;
+    private Float directSelection;
+    private Float outSourcing;
     private Boolean active;
 }

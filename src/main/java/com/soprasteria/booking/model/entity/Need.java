@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -18,9 +19,31 @@ public class Need implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "active")
+    private String idOffer;
+    private Integer year;
+    private Timestamp creationWeek;
+    private String code;
+    private String month;
+    private String idSeq;
+    private String city;
+    private String position;
+    private String state;
+    private String recruiter;
+    private Timestamp openingDate;
+    private String pipelDays;
+    private String agency;
+    private String client;
+    private String hiringManage;
+    private String profile;
+    private String technology;
+    private String subtechnology;
+    private Integer vacancies;
+    private String priority;
+    private String pendingAccept;
+    private Timestamp closingDate;
+    private Integer openDays;
+    private String closingReason;
     private Boolean active;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
