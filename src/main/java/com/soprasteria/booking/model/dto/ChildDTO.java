@@ -25,7 +25,7 @@ public class ChildDTO {
     private String recruiter;
     private Timestamp openingDate;
     private Integer pipelDays;
-    private String agency;
+    private Integer agency;
     private String client;
     private String hiringManage;
     private String profile;
