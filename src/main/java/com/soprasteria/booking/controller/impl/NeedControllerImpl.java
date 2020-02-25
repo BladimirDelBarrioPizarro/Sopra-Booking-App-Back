@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -28,27 +29,21 @@ public class NeedControllerImpl implements NeedController {
         this.entityLinks = entityLinks;
     }
 
-    public ResponseEntity<CollectionModel<NeedDTO>> findAll(Pageable pageable) {
+    public ResponseEntity<List<NeedDTO>> findAll(Pageable pageable) {
         log.info(" -- GET /needs");
-        CollectionModel<NeedDTO> needs = new CollectionModel(needService.findAll(pageable));
-        needs.add(entityLinks.linkToItemResource(Need.class, "/api/v1/needs"));
-        return new ResponseEntity<>(needs, HttpStatus.OK);
+        return new ResponseEntity<>(needService.findAll(pageable), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<EntityModel<NeedDTO>> findById(Long id) {
+    public ResponseEntity<NeedDTO> findById(Long id) {
         log.info(" -- GET /needs/{}",id);
-        EntityModel<NeedDTO> need = new EntityModel<>(needService.findById(id));
-        need.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getContent()).getId()));
-        return new ResponseEntity<>(need,HttpStatus.OK);
+        return new ResponseEntity<>(needService.findById(id),HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<EntityModel<Links>> saveNeed(Need need) {
+    public ResponseEntity<NeedDTO> saveNeed(Need need) {
         log.info(" -- POST /needs {}",need.getName());
-        EntityModel<NeedDTO> entity = new EntityModel<>(needService.saveNeed(need));
-        entity.add(entityLinks.linkToItemResource(Need.class, Objects.requireNonNull(need.getId())));
-        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        return new ResponseEntity(needService.saveNeed(need),HttpStatus.OK);
     }
 
     @Override

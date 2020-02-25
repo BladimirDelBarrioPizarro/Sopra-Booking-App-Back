@@ -10,16 +10,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public interface HiringcController {
 
     @GetMapping(path = "/hiringc",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<CollectionModel<HiringcDTO>> findAll();
+    ResponseEntity<List<HiringcDTO>> findAll();
 
     @GetMapping(path = "/hiringc/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<HiringcDTO>> findById(@PathVariable("id") Long id);
+    ResponseEntity<HiringcDTO> findById(@PathVariable("id") Long id);
 
     @PostMapping(path = "/hiringc",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveHiring(@RequestBody Hiringc hiringc);

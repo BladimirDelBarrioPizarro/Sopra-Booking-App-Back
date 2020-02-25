@@ -10,16 +10,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public interface ChildController {
 
     @GetMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<CollectionModel<ChildDTO>> findAll();
+    ResponseEntity<List<ChildDTO>> findAll();
 
     @GetMapping(path = "/childs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<ChildDTO>> findById(@PathVariable("id") Long id);
+    ResponseEntity<ChildDTO> findById(@PathVariable("id") Long id);
 
     @PostMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveChild(@RequestBody Child child);

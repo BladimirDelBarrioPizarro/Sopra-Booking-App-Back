@@ -2,9 +2,7 @@ package com.soprasteria.booking.controller.impl;
 
 import com.soprasteria.booking.controller.HiringController;
 import com.soprasteria.booking.model.dto.HiringDTO;
-import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Hiring;
-import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.service.HiringService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.CollectionModel;
@@ -14,6 +12,7 @@ import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -28,19 +27,15 @@ public class HiringControllerImpl implements HiringController {
     }
 
     @Override
-    public ResponseEntity<CollectionModel<HiringDTO>> findAll() {
+    public ResponseEntity<List<HiringDTO>> findAll() {
         log.info(" -- GET /hiring");
-        CollectionModel<HiringDTO> hirings = new CollectionModel(hiringService.findAll());
-        hirings.add(entityLinks.linkToItemResource(Hiring.class, "/api/v1/hiring"));
-        return new ResponseEntity(hirings, HttpStatus.OK);
+        return new ResponseEntity<>(hiringService.findAll(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<EntityModel<HiringDTO>> findById(Long id) {
+    public ResponseEntity<HiringDTO> findById(Long id) {
         log.info(" -- GET /hiring/{}",id);
-        EntityModel<HiringDTO> hiring = new EntityModel<>(hiringService.findById(id));
-        hiring.add(entityLinks.linkToItemResource(Hiring.class, Objects.requireNonNull(hiring.getContent().getId())));
-        return new ResponseEntity<>(hiring,HttpStatus.OK);
+        return new ResponseEntity<>(hiringService.findById(id),HttpStatus.OK);
     }
 
     @Override

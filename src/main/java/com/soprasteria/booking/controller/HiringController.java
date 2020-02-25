@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 public interface HiringController {
 
     @GetMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<CollectionModel<HiringDTO>> findAll();
+    ResponseEntity<List<HiringDTO>> findAll();
 
     @GetMapping(path = "/hiring/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<HiringDTO>> findById(@PathVariable("id") Long id);
+    ResponseEntity<HiringDTO> findById(@PathVariable("id") Long id);
 
     @PostMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> saveHiring(@RequestBody Hiring hiring);

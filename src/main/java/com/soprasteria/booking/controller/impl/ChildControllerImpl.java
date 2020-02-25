@@ -13,6 +13,7 @@ import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -27,20 +28,16 @@ public class ChildControllerImpl implements ChildController {
     }
 
     @Override
-    public ResponseEntity<CollectionModel<ChildDTO>> findAll() {
+    public ResponseEntity<List<ChildDTO>> findAll() {
         log.info(" -- GET /childs");
-        CollectionModel<ChildDTO> entity = new CollectionModel(childService.findAll());
-        entity.add(entityLinks.linkToItemResource(Child.class, "/api/v1/childs"));
-        return new ResponseEntity(entity, HttpStatus.OK);
+        return new ResponseEntity<>(childService.findAll(), HttpStatus.OK);
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Override
-    public ResponseEntity<EntityModel<ChildDTO>> findById(Long id) {
+    public ResponseEntity<ChildDTO> findById(Long id) {
         log.info(" -- GET /childs/{}",id);
-        EntityModel<ChildDTO> entity = new EntityModel<>(childService.findById(id));
-        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(entity.getContent()).getId()));
-        return new ResponseEntity<>(entity,HttpStatus.OK);
+        return new ResponseEntity<>(childService.findById(id),HttpStatus.OK);
     }
 
     @Override

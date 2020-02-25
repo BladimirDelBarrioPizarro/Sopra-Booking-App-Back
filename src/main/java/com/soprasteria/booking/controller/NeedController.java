@@ -12,19 +12,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public interface NeedController {
 
     @GetMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<CollectionModel<NeedDTO>> findAll(@Param("pageable") Pageable pageable);
+    ResponseEntity<List<NeedDTO>> findAll(@Param("pageable") Pageable pageable);
 
     @GetMapping(path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<NeedDTO>> findById(@PathVariable("id") Long id);
+    ResponseEntity<NeedDTO> findById(@PathVariable("id") Long id);
 
     @PostMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> saveNeed(@RequestBody Need need);
+    ResponseEntity<NeedDTO> saveNeed(@RequestBody Need need);
 
     @PutMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<EntityModel<Links>> updateNeed(@RequestBody Need need);

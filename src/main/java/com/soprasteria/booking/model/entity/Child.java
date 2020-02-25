@@ -37,6 +37,7 @@ public class Child implements Serializable {
     private String hiringManage;
     private String profile;
     private String technology;
+    private String subtechnology;
     private Integer vacancies;
     private String priority;
     private String pendingAccept;
