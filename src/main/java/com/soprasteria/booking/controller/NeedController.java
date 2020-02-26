@@ -29,7 +29,7 @@ public interface NeedController {
     ResponseEntity<NeedDTO> saveNeed(@RequestBody Need need);
 
     @PutMapping(path = "/needs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> updateNeed(@RequestBody Need need);
+    ResponseEntity<NeedDTO> updateNeed(@RequestBody Need need);
 
     @DeleteMapping( path = "/needs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<Void> deleteNeed(@PathVariable("id") Long id);
