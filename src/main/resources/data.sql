@@ -32,7 +32,7 @@ CREATE TABLE public.hiring (
         counter_offer2 DECIMAL NOT NULL,
         variable character varying(100) NOT NULL,
         offer_status character varying(100) NOT NULL,
-        reason_rejection_offer character varying(100) NOT NULL,
+        reason_rejection_offer character varying(100),
         validated character varying(100) NOT NULL,
         employee_web character varying(100) NOT NULL,
         observations character varying(100) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE public.hiringc (
         counter_offer2 DECIMAL NOT NULL,
         variable character varying(100) NOT NULL,
         offer_status character varying(100) NOT NULL,
-        reason_rejection_offer character varying(100) NOT NULL,
+        reason_rejection_offer character varying(100),
         validated character varying(100) NOT NULL,
         employee_web character varying(100) NOT NULL,
         observations character varying(100) NOT NULL,
@@ -157,7 +157,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Bladimir del Barrio Pizarro',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR ABAP','DESARROLLO',951,'SBS','Bladimir del Barrio Pizarro',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -166,7 +166,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Roberto del Barrio Pizarro',
+       'MHR','INFOJOBS:INSCRITO', 'QA','DESARROLLO',951,'SBS','Roberto del Barrio Pizarro',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -175,7 +175,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Maria del Pilar Pizarro',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR SENIOR JAVA','DESARROLLO',951,'SBS','Maria del Pilar Pizarro',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -184,7 +184,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Gregorio del Barrio Perez',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR SENIOR ANGULAR','DESARROLLO',951,'SBS','Gregorio del Barrio Perez',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -194,7 +194,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Pedro del Barrio Pizarro',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR JAVA','DESARROLLO',951,'SBS','Pedro del Barrio Pizarro',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -203,7 +203,7 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Juan Carlos del Barrio Perez',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR REACT','DESARROLLO',951,'SBS','Juan Carlos del Barrio Perez',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -244,7 +244,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Ana Gomez Cuñado',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR VUE','DESARROLLO',951,'SBS','Ana Gomez Cuñado',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -253,7 +253,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Anabel Segura Cuñado',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR JAVA','DESARROLLO',951,'SBS','Anabel Segura Cuñado',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -262,7 +262,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Alfonso Estepa',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR REACT','DESARROLLO',951,'SBS','Alfonso Estepa',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -271,7 +271,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Ian Curtis',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR SENIOR JAVA','DESARROLLO',951,'SBS','Ian Curtis',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -282,7 +282,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Natalia Seres',
+       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR ANGULAR','DESARROLLO',951,'SBS','Natalia Seres',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
@@ -291,7 +291,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
                     offer_validation,offer1,counter_offer2,variable,offer_status,reason_rejection_offer,validated,employee_web,observations,
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
-       'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR','DESARROLLO',951,'SBS','Berghain Osgut',
+       'MHR','INFOJOBS:INSCRITO', 'QA','DESARROLLO',951,'SBS','Berghain Osgut',
        CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
         '','SI','SI','','', 1000,1500,true);
 
