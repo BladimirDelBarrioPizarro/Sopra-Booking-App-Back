@@ -26,7 +26,7 @@ public interface HiringController {
     ResponseEntity<EntityModel<Links>> saveHiring(@RequestBody Hiring hiring);
 
     @PutMapping(path = "/hiring",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> updateHiring(@RequestBody Hiring hiring);
+    ResponseEntity<HiringDTO> updateHiring(@RequestBody Hiring hiring);
 
     @DeleteMapping(path = "/hiring/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<Void> deleteHiring(@PathVariable("id") Long id);
