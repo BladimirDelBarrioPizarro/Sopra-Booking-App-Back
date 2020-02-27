@@ -15,6 +15,7 @@ public class HiringMapper {
     public static HiringDTO mapHiringToHiringDTO(Hiring hiring) {
         return HiringDTO.builder()
                 .id(hiring.getId())
+                .registrationDate(hiring.getRegistrationDate())
                 .companyHires(hiring.getCompanyHires())
                 .incorporationModality(hiring.getIncorporationModality())
                 .requestTeam(hiring.getRequestTeam())
@@ -49,6 +50,7 @@ public class HiringMapper {
     public static HiringDTO mapHiringOptionalToHiringDTO(Optional<Hiring> hiringOptional) {
         return HiringDTO.builder()
                 .id(hiringOptional.get().getId())
+                .registrationDate(hiringOptional.get().getRegistrationDate())
                 .companyHires(hiringOptional.get().getCompanyHires())
                 .incorporationModality(hiringOptional.get().getIncorporationModality())
                 .requestTeam(hiringOptional.get().getRequestTeam())
@@ -69,6 +71,8 @@ public class HiringMapper {
                 .counterOffer2(hiringOptional.get().getCounterOffer2())
                 .reasonRejectionOffer(hiringOptional.get().getReasonRejectionOffer())
                 .validated(hiringOptional.get().getValidated())
+                .variable(hiringOptional.get().getVariable())
+                .offerStatus(hiringOptional.get().getOfferStatus())
                 .employeeWeb(hiringOptional.get().getEmployeeWeb())
                 .observations(hiringOptional.get().getObservations())
                 .resourceProfitability(hiringOptional.get().getResourceProfitability())

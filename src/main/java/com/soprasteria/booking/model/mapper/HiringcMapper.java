@@ -17,6 +17,7 @@ public class HiringcMapper {
     public static HiringcDTO mapHiringcToHiringcDTO(Hiringc hiringc) {
         return HiringcDTO.builder()
                 .id(hiringc.getId())
+                .registrationDate(hiringc.getRegistrationDate())
                 .companyHires(hiringc.getCompanyHires())
                 .incorporationModality(hiringc.getIncorporationModality())
                 .requestTeam(hiringc.getRequestTeam())
@@ -51,6 +52,7 @@ public class HiringcMapper {
     public static HiringcDTO mapHiringcOptionalToHiringcDTO(Optional<Hiringc> hiringcOptional) {
         return HiringcDTO.builder()
                 .id(hiringcOptional.get().getId())
+                .registrationDate(hiringcOptional.get().getRegistrationDate())
                 .companyHires(hiringcOptional.get().getCompanyHires())
                 .incorporationModality(hiringcOptional.get().getIncorporationModality())
                 .requestTeam(hiringcOptional.get().getRequestTeam())

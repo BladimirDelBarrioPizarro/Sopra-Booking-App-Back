@@ -32,7 +32,7 @@ CREATE TABLE public.hiring (
         counter_offer2 DECIMAL NOT NULL,
         variable character varying(100) NOT NULL,
         offer_status character varying(100) NOT NULL,
-        reason_rejection_offer character varying(100),
+        reason_rejection_offer character varying(100) NOT NULL,
         validated character varying(100) NOT NULL,
         employee_web character varying(100) NOT NULL,
         observations character varying(100) NOT NULL,
@@ -158,8 +158,8 @@ INSERT INTO hiring (registration_date,company_hires,incorporation_modality,reque
                     resource_profitability,direct_selection,out_sourcing,active)
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
        'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR JUNIOR ABAP','DESARROLLO',951,'SBS','Bladimir del Barrio Pizarro',
-       CURRENT_TIMESTAMP,'','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
-        '','SI','SI','','', 1000,1500,true);
+       CURRENT_TIMESTAMP,'Exceptions','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
+        'Rechaza Oferta','SI','SI','Observations','12%', 1000,1500,true);
 
 INSERT INTO hiring (registration_date,company_hires,incorporation_modality,request_team,team_offer,recruiter,recruiter_source,
                     market_stall,ambit,agency,client,name,incorporation_date,exceptions,indefinite_contract,category,
