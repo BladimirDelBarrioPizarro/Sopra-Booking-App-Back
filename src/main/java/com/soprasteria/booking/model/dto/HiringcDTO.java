@@ -25,6 +25,7 @@ public class HiringcDTO {
     private String exceptions;
     private String indefiniteContract;
     private String category;
+    private String providerName;
     private String offerValidation;
     private Float offer1;
     private Float counterOffer2;

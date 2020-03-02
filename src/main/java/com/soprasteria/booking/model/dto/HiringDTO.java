@@ -27,6 +27,7 @@ public class HiringDTO {
     private String name;
     private Timestamp incorporationDate;
     private String exceptions;
+    private String providerName;
     private String indefiniteContract;
     private String category;
     private String offerValidation;

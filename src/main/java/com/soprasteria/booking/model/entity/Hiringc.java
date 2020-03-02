@@ -45,6 +45,7 @@ public class Hiringc implements Serializable {
     private String validated;
     private String employeeWeb;
     private String observations;
+    private String providerName;
     private String resourceProfitability;
     private Float directSelection;
     private Float outSourcing;
