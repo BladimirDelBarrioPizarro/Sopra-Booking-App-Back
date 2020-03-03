@@ -33,8 +33,8 @@ public class ApiConfig {
 
 
     @Bean
-    public NeedService needService(NeedDao needDao){
-        return new NeedServiceImpl(needDao);
+    public NeedService needService(NeedDao needDao,ChildDao childDao){
+        return new NeedServiceImpl(needDao,childDao);
     }
 
 

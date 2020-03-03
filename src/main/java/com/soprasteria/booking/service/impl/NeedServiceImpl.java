@@ -1,7 +1,9 @@
 package com.soprasteria.booking.service.impl;
 
+import com.soprasteria.booking.dao.ChildDao;
 import com.soprasteria.booking.dao.NeedDao;
 import com.soprasteria.booking.model.dto.NeedDTO;
+import com.soprasteria.booking.model.entity.Child;
 import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.model.exceptions.*;
 import com.soprasteria.booking.model.mapper.NeedMapper;
@@ -19,9 +21,11 @@ import java.util.stream.Collectors;
 public class NeedServiceImpl implements NeedService {
 
     private NeedDao needDao;
+    private ChildDao childDao;
 
-    public NeedServiceImpl(NeedDao needDao) {
+    public NeedServiceImpl(NeedDao needDao,ChildDao childDao) {
         this.needDao = needDao;
+        this.childDao = childDao;
     }
 
     @Override
@@ -58,6 +62,9 @@ public class NeedServiceImpl implements NeedService {
     @Override
     public NeedDTO updateNeed(Need need) {
         try{
+             List<Child> childs = need.getChild();
+             List<Child> childsResponse =  childs.stream().map(item -> childDao.save(item)).collect(Collectors.toList());
+             need.setChild(childsResponse);
             return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
         }catch (Exception ex){
             log.error(" -- ERROR PUT /needs {}",ex.getMessage());
