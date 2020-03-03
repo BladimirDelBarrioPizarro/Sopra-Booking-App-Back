@@ -24,10 +24,10 @@ public interface ChildController {
     ResponseEntity<ChildDTO> findById(@PathVariable("id") Long id);
 
     @PostMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> saveChild(@RequestBody Child child);
+    ResponseEntity<ChildDTO> saveChild(@RequestBody Child child);
 
     @PutMapping(path = "/childs",produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<EntityModel<Links>> updateChild(@RequestBody Child child);
+    ResponseEntity<ChildDTO> updateChild(@RequestBody Child child);
 
     @DeleteMapping(path = "/childs/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<Void> deleteChild(@PathVariable("id") Long id);

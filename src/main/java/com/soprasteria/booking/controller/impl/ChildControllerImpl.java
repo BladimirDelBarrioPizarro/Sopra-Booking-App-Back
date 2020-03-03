@@ -41,19 +41,15 @@ public class ChildControllerImpl implements ChildController {
     }
 
     @Override
-    public ResponseEntity<EntityModel<Links>> saveChild(Child child) {
+    public ResponseEntity<ChildDTO> saveChild(Child child) {
         log.info(" -- POST /child {}",child.getName());
-        EntityModel<ChildDTO> entity = new EntityModel<>(childService.saveChild(child));
-        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(entity.getContent().getId())));
-        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        return new ResponseEntity(childService.saveChild(child),HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<EntityModel<Links>> updateChild(Child child) {
+    public ResponseEntity<ChildDTO> updateChild(Child child) {
         log.info(" -- PUT /childs {}",child.getName());
-        EntityModel<ChildDTO> entity = new EntityModel<>(childService.updateChild(child));
-        entity.add(entityLinks.linkToItemResource(Child.class, Objects.requireNonNull(child.getId())));
-        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        return new ResponseEntity(childService.updateChild(child),HttpStatus.OK);
     }
 
     @Override
