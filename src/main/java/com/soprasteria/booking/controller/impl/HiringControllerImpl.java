@@ -39,11 +39,9 @@ public class HiringControllerImpl implements HiringController {
     }
 
     @Override
-    public ResponseEntity<EntityModel<Links>> saveHiring(Hiring hiring) {
+    public ResponseEntity<HiringDTO> saveHiring(Hiring hiring) {
         log.info(" -- POST /hiring {}",hiring.getName());
-        EntityModel<HiringDTO> entity = new EntityModel<>(hiringService.saveHiring(hiring));
-        entity.add(entityLinks.linkToItemResource(Hiring.class,Objects.requireNonNull(hiring.getId())));
-        return new ResponseEntity(entity.getLinks(),HttpStatus.OK);
+        return new ResponseEntity(hiringService.saveHiring(hiring),HttpStatus.OK);
     }
 
     @Override

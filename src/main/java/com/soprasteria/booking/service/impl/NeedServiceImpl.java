@@ -1,9 +1,12 @@
 package com.soprasteria.booking.service.impl;
 
 import com.soprasteria.booking.dao.ChildDao;
+import com.soprasteria.booking.dao.HiringDao;
+import com.soprasteria.booking.dao.HiringcDao;
 import com.soprasteria.booking.dao.NeedDao;
 import com.soprasteria.booking.model.dto.NeedDTO;
 import com.soprasteria.booking.model.entity.Child;
+import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.model.entity.Need;
 import com.soprasteria.booking.model.exceptions.*;
 import com.soprasteria.booking.model.mapper.NeedMapper;
@@ -22,10 +25,12 @@ public class NeedServiceImpl implements NeedService {
 
     private NeedDao needDao;
     private ChildDao childDao;
+    private HiringDao hiringDao;
 
-    public NeedServiceImpl(NeedDao needDao,ChildDao childDao) {
+    public NeedServiceImpl(NeedDao needDao, ChildDao childDao, HiringDao hiringcDao) {
         this.needDao = needDao;
         this.childDao = childDao;
+        this.hiringDao = hiringcDao;
     }
 
     @Override
@@ -65,6 +70,10 @@ public class NeedServiceImpl implements NeedService {
              List<Child> childs = need.getChild();
              List<Child> childsResponse =  childs.stream().map(item -> childDao.save(item)).collect(Collectors.toList());
              need.setChild(childsResponse);
+
+             List<Hiring> hiringList = need.getHiring();
+             List<Hiring> hiringsResponse = hiringList.stream().map(item -> hiringDao.save(item)).collect(Collectors.toList());
+             need.setHiring(hiringsResponse);
             return NeedMapper.mapNeedToNeedDTO(needDao.save(need));
         }catch (Exception ex){
             log.error(" -- ERROR PUT /needs {}",ex.getMessage());

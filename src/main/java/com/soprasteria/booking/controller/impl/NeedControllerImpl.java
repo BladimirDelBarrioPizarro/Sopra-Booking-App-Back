@@ -43,13 +43,13 @@ public class NeedControllerImpl implements NeedController {
     @Override
     public ResponseEntity<NeedDTO> saveNeed(Need need) {
         log.info(" -- POST /needs {}",need.getName());
-        return new ResponseEntity(needService.saveNeed(need),HttpStatus.OK);
+        return new ResponseEntity<>(needService.saveNeed(need),HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<NeedDTO> updateNeed(Need need) {
         log.info(" -- PUT /needs {}",need.getName());
-        return new ResponseEntity(needService.updateNeed(need),HttpStatus.OK);
+        return new ResponseEntity<>(needService.updateNeed(need),HttpStatus.OK);
     }
 
     @Override
@@ -60,6 +60,6 @@ public class NeedControllerImpl implements NeedController {
             return ResponseEntity.noContent().build();
         }
         needService.deleteNeed(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
