@@ -37,7 +37,7 @@ public class NeedServiceImpl implements NeedService {
     public List<NeedDTO> findAll(Pageable pageable) {
         pageable = pageRequest(pageable);
         try{
-            return NeedMapper.mapNeedListToNeedDTO(needDao.findAll(pageable).stream().collect(Collectors.toList()));
+            return NeedMapper.mapNeedListToNeedDTO(needDao.findAll(pageable).stream().filter(Need::getActive).collect(Collectors.toList()));
         }catch (Exception ex) {
             log.error(" -- ERROR GET/needs {}", ex.getMessage());
             throw new HandleExceptionNeedFindAll(ex);
