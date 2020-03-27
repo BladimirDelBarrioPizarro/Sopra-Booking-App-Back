@@ -9,6 +9,7 @@ import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class HiringcServiceImpl implements HiringcService {
@@ -22,7 +23,7 @@ public class HiringcServiceImpl implements HiringcService {
     @Override
     public List<HiringcDTO> findAll() {
         try{
-            return HiringcMapper.mapHiringcListToHiringcListDTO(hiringcDao.findAll());
+            return HiringcMapper.mapHiringcListToHiringcListDTO(hiringcDao.findAll().stream().filter(Hiringc::getActive).collect(Collectors.toList()));
         }catch (Exception ex){
             log.error(" -- ERROR GET /hiringsc {}", ex.getMessage());
             throw new HandleExceptionHiringFindAll(ex);

@@ -9,6 +9,7 @@ import com.soprasteria.booking.service.ChildService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class ChildServiceImpl implements ChildService {
@@ -22,7 +23,7 @@ public class ChildServiceImpl implements ChildService {
     @Override
     public List<ChildDTO> findAll() {
         try{
-            return ChildMapper.mapChildListToChildDTOList(childDao.findAll());
+            return ChildMapper.mapChildListToChildDTOList(childDao.findAll().stream().filter(Child::getActive).collect(Collectors.toList()));
         }catch (Exception ex){
             log.error(" -- ERROR GET /childs {} ",ex.getMessage());
             throw new HandleExceptionChildFindAll(ex);
