@@ -38,3 +38,40 @@ public class NeedsServiceDummy {
     }
 
 }
+
+/*
+* /*
+* id SERIAL primary key NOT NULL,
+        registration_date TIMESTAMP,
+        company_hires character varying(100) NOT NULL,
+        incorporation_modality character varying(100) NOT NULL,
+        request_team character varying(100) NOT NULL,
+        team_offer character varying(100) NOT NULL,
+        recruiter character varying(100) NOT NULL,
+        recruiter_source character varying(100) NOT NULL,
+        market_stall character varying(100) NOT NULL,
+        ambit character varying(100) NOT NULL,
+        agency character varying(100) NOT NULL,
+        client character varying(100) NOT NULL,
+        name character varying(100) NOT NULL,
+        incorporation_date TIMESTAMP,
+        exceptions character varying(100) NOT NULL,
+        indefinite_contract character varying(100) NOT NULL,
+        category character varying(100) NOT NULL,
+        offer_validation character varying(100) NOT NULL,
+        offer1 DECIMAL NOT NULL,
+        counter_offer2 DECIMAL,
+        variable character varying(100) NOT NULL,
+        offer_status character varying(100) NOT NULL,
+        reason_rejection_offer character varying(100) NOT NULL,
+        validated character varying(100),
+        employee_web character varying(100),
+        observations character varying(100),
+        provider_name character varying(100) ,
+        resource_profitability character varying(100),
+        direct_selection DECIMAL,
+        out_sourcing DECIMAL,
+        active BOOLEAN
+*
+*
+* */
