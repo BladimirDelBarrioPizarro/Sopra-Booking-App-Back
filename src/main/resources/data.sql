@@ -6,6 +6,15 @@ drop table hiringc if exists;
 drop table hiring if exists;
 drop table child if exists;
 drop table need if exists;
+drop table recruiter if exists;
+
+
+CREATE TABLE public.recruiter(
+    id SERIAL primary key NOT NULL,
+    name character varying(100) NOT NULL,
+    surname character varying(100) NOT NULL,
+    initials character varying(10) NOT NULL
+);
 
 
 
@@ -152,6 +161,8 @@ CREATE TABLE public.need_child(
     child_id integer NOT NULL
 );
 
+/* Recruiter */
+
 /* Hiring */
 
 INSERT INTO hiring (registration_date,company_hires,incorporation_modality,request_team,team_offer,recruiter,recruiter_source,
@@ -219,7 +230,7 @@ INSERT INTO need (name,id_offer,year,creation_week,code,month,id_seq,city,positi
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
                   open_days,closing_reason,active)
 VALUES ('ING','m.1.35',2020,1,'code','Febrero','m.1.35','Madrid','D','A','CSG',CURRENT_TIMESTAMP,11,933,'SOPRA NORUEGA',
-       'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',false);
+       'Jose Diago','BACKEND','JAVA','REACT',1,'ALTA','ACEPTA',CURRENT_TIMESTAMP,1,'ACEPTA',true);
 
 INSERT INTO need (name,id_offer,year,creation_week,code,month,id_seq,city,position,state,recruiter,opening_date,pipel_days,
                   agency,client,hiring_manage,profile,technology,subtechnology,vacancies,priority,pending_accept,closing_date,
@@ -275,7 +286,7 @@ INSERT INTO hiringc (registration_date,company_hires,incorporation_modality,requ
 VALUES(CURRENT_TIMESTAMP,'Sopra Steria España','Contrato','MAD','Filial MAD',
        'MHR','INFOJOBS:INSCRITO', 'PROGRAMADOR REACT JUNIOR','DESARROLLO',951,'SBS','Ian Curtis',
        CURRENT_TIMESTAMP,'EXCEPCIÓN: No cumple TITULO','SI','IS SB N1','Validad por TA',18500,20000,'SI','Aceptada',
-        'Rechaza Oferta','SI','SI','Observations','Proveedor','12', 1000,1500,true);
+        'Rechaza Oferta','SI','SI','Observations','Proveedor','12', 1000,1500,false);
 
 
 
