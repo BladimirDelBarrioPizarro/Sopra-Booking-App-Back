@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageRequest;
+
+import java.text.ParseException;
 import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -21,7 +23,7 @@ public class NeedServiceTestImpl {
 
 
     @Test
-    void findAllTest(){
+    void findAllTest() throws ParseException {
         PageRequest pageRequest = NeedsServiceDummy.pageRequestDummy();
         List<NeedDTO> needDTOList = NeedsServiceDummy.needDTOListDummy();
         given(needService.findAll(any())).willReturn(needDTOList);
@@ -30,7 +32,7 @@ public class NeedServiceTestImpl {
     }
 
     @Test
-    void findByIdTest(){
+    void findByIdTest() throws ParseException {
         NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
         given(needService.findById(any())).willReturn(needDTO);
         NeedDTO needDTO1 = needService.findById(1L);
@@ -38,7 +40,7 @@ public class NeedServiceTestImpl {
     }
 
     @Test
-    void saveNeedTest(){
+    void saveNeedTest() throws ParseException {
        NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
        Need need = NeedsServiceDummy.needDummy();
        given(needService.saveNeed(any())).willReturn(needDTO);
@@ -47,7 +49,7 @@ public class NeedServiceTestImpl {
     }
 
     @Test
-    void updateNeedTest(){
+    void updateNeedTest() throws ParseException {
         NeedDTO needDTO = NeedsServiceDummy.needDTODummy();
         needDTO.setActive(false);
         Need need = NeedsServiceDummy.needDummy();
@@ -58,7 +60,7 @@ public class NeedServiceTestImpl {
     }
 
     @Test
-    void deleteNeedTest() {
+    void deleteNeedTest() throws ParseException {
         Need need = NeedsServiceDummy.needDummy();
         needService.saveNeed(need);
         needService.deleteNeed(need.getId());

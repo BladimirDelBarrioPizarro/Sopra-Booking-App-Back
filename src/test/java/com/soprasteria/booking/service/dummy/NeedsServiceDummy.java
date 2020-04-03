@@ -5,7 +5,10 @@ import com.soprasteria.booking.model.entity.Hiring;
 import com.soprasteria.booking.model.entity.Need;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class NeedsServiceDummy {
@@ -15,25 +18,25 @@ public class NeedsServiceDummy {
     }
 
 
-    public static NeedDTO needDTODummy(){
+    public static NeedDTO needDTODummy() throws ParseException {
         return NeedDTO.builder()
                 .id(1L)
                 .name("Test NeedDTO")
                 .active(true)
-                .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
+                .hiring(Collections.singletonList(HiringServiceDummy.hiringDummy()))
                 .build();
     }
 
-    public static List<NeedDTO> needDTOListDummy(){
-        return Arrays.asList(needDTODummy());
+    public static List<NeedDTO> needDTOListDummy() throws ParseException {
+        return Collections.singletonList(needDTODummy());
     }
 
-    public static Need needDummy(){
+    public static Need needDummy() throws ParseException {
         return Need.builder()
                 .id(1L)
                 .name("Test Need")
                 .active(true)
-                .hiring(Arrays.asList(new Hiring(1L,"Full Stack",true)))
+                .hiring(Collections.singletonList(HiringServiceDummy.hiringDummy()))
                 .build();
     }
 

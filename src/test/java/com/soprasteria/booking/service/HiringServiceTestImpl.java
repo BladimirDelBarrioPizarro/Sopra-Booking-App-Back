@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.text.ParseException;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -21,7 +22,7 @@ public class HiringServiceTestImpl {
 
 
     @Test
-    void findAllTest(){
+    void findAllTest() throws ParseException {
         List<HiringDTO> hiringDTOList = HiringServiceDummy.hiringDTOListDummy();
         when(hiringService.findAll()).thenReturn(hiringDTOList);
         List<HiringDTO> hiringDTOList2 = hiringService.findAll();
@@ -29,7 +30,7 @@ public class HiringServiceTestImpl {
     }
 
     @Test
-    void findByIdTest(){
+    void findByIdTest() throws ParseException {
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         given(hiringService.findById(any())).willReturn(hiringDTO);
         HiringDTO hiringDTO1 = hiringService.findById(1L);
@@ -37,7 +38,7 @@ public class HiringServiceTestImpl {
     }
 
     @Test
-    void saveHiringTest(){
+    void saveHiringTest() throws ParseException {
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         Hiring hiring = HiringServiceDummy.hiringDummy();
         given(hiringService.saveHiring(any())).willReturn(hiringDTO);
@@ -46,7 +47,7 @@ public class HiringServiceTestImpl {
     }
 
     @Test
-    void updateHiringTest(){
+    void updateHiringTest() throws ParseException {
         HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
         hiringDTO.setActive(false);
         Hiring hiring = HiringServiceDummy.hiringDummy();
@@ -57,7 +58,7 @@ public class HiringServiceTestImpl {
     }
 
     @Test
-    void deleteHiringTest(){
+    void deleteHiringTest() throws ParseException {
         Hiring hiring = HiringServiceDummy.hiringDummy();
         hiringService.saveHiring(hiring);
         hiringService.deleteHiring(hiring.getId());
