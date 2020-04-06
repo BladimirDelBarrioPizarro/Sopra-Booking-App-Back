@@ -174,6 +174,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
+    @ExceptionHandler(HandleExceptionRecruiterFindAll.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionRecruiterFindAll(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiters not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
+                ex.getMessage(),new Timestamp(new Date().getTime()));
+    }
+
 }
 
 
