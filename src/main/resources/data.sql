@@ -82,6 +82,9 @@ CREATE TABLE public.need (
         active BOOLEAN
 );
 
+
+
+
 CREATE TABLE public.hiring_need(
     need_id integer NOT NULL,
     hiring_id integer NOT NULL
@@ -162,6 +165,9 @@ CREATE TABLE public.need_child(
 );
 
 /* Recruiter */
+
+INSERT INTO recruiter (id,name,surname,initials) VALUES (1,'Celia','Pizarro Perez','CPP');
+INSERT INTO recruiter (id,name,surname,initials) VALUES (2,'Bladimir','Antón Muñoz','BAM');
 
 /* Hiring */
 
