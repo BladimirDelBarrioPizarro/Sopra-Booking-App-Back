@@ -12,10 +12,7 @@ import com.soprasteria.booking.dao.ChildDao;
 import com.soprasteria.booking.dao.HiringDao;
 import com.soprasteria.booking.dao.HiringcDao;
 import com.soprasteria.booking.dao.NeedDao;
-import com.soprasteria.booking.service.ChildService;
-import com.soprasteria.booking.service.HiringService;
-import com.soprasteria.booking.service.HiringcService;
-import com.soprasteria.booking.service.NeedService;
+import com.soprasteria.booking.service.*;
 import com.soprasteria.booking.service.impl.ChildServiceImpl;
 import com.soprasteria.booking.service.impl.HiringServiceImpl;
 import com.soprasteria.booking.service.impl.HiringcServiceImpl;
@@ -53,6 +50,8 @@ public class ApiConfig {
     public HiringcService hiringcService(HiringcDao hiringcDao){
         return new HiringcServiceImpl(hiringcDao);
     }
+
+
 
 
     @Bean
