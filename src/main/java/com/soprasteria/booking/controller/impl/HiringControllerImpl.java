@@ -19,11 +19,9 @@ import java.util.Objects;
 public class HiringControllerImpl implements HiringController {
 
     private HiringService hiringService;
-    private final EntityLinks entityLinks;
 
-    public HiringControllerImpl(HiringService hiringService,EntityLinks entityLinks) {
+    public HiringControllerImpl(HiringService hiringService) {
         this.hiringService = hiringService;
-        this.entityLinks = entityLinks;
     }
 
     @Override
@@ -41,13 +39,13 @@ public class HiringControllerImpl implements HiringController {
     @Override
     public ResponseEntity<HiringDTO> saveHiring(Hiring hiring) {
         log.info(" -- POST /hiring {}",hiring.getName());
-        return new ResponseEntity(hiringService.saveHiring(hiring),HttpStatus.OK);
+        return new ResponseEntity<>(hiringService.saveHiring(hiring),HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<HiringDTO> updateHiring(Hiring hiring) {
         log.info(" -- PUT /hiring {}",hiring.getName());
-        return  new ResponseEntity(hiringService.updateHiring(hiring),HttpStatus.OK);
+        return  new ResponseEntity<>(hiringService.updateHiring(hiring),HttpStatus.OK);
     }
 
     @Override
@@ -58,6 +56,6 @@ public class HiringControllerImpl implements HiringController {
             return ResponseEntity.noContent().build();
         }
         hiringService.deleteHiring(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

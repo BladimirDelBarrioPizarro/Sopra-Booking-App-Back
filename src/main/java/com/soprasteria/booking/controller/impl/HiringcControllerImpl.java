@@ -7,22 +7,19 @@ import com.soprasteria.booking.service.HiringcService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Links;
-import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Objects;
+
 
 @Slf4j
 public class HiringcControllerImpl implements HiringcController {
 
     private HiringcService hiringcService;
-    private EntityLinks entityLinks;
 
-    public HiringcControllerImpl(HiringcService hiringcService, EntityLinks entityLinks) {
+    public HiringcControllerImpl(HiringcService hiringcService) {
         this.hiringcService = hiringcService;
-        this.entityLinks = entityLinks;
     }
 
     @Override
@@ -40,17 +37,13 @@ public class HiringcControllerImpl implements HiringcController {
     @Override
     public ResponseEntity<EntityModel<Links>> saveHiring(Hiringc hiringc) {
         log.info(" -- POST /hiringc {}", hiringc.getName());
-        EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.saveHiringc(hiringc));
-        entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(hiringc.getId())));
-        return new ResponseEntity(entity.getLinks(), HttpStatus.OK);
+        return new ResponseEntity(hiringcService.saveHiringc(hiringc), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<EntityModel<Links>> updateHiringc(Hiringc hiringc) {
         log.info(" -- PUT /hiringc {}", hiringc.getName());
-        EntityModel<HiringcDTO> entity = new EntityModel<>(hiringcService.updateHiringc(hiringc));
-        entity.add(entityLinks.linkToItemResource(Hiringc.class, Objects.requireNonNull(hiringc.getId())));
-        return new ResponseEntity(entity.getLinks(), HttpStatus.OK);
+        return new ResponseEntity(hiringcService.updateHiringc(hiringc), HttpStatus.OK);
     }
 
     @Override
@@ -61,7 +54,7 @@ public class HiringcControllerImpl implements HiringcController {
             return ResponseEntity.noContent().build();
         }
         hiringcService.deleteHiringc(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

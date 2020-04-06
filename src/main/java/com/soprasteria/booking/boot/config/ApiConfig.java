@@ -1,27 +1,12 @@
 package com.soprasteria.booking.boot.config;
 
-import com.soprasteria.booking.controller.ChildController;
-import com.soprasteria.booking.controller.HiringController;
-import com.soprasteria.booking.controller.HiringcController;
-import com.soprasteria.booking.controller.NeedController;
-import com.soprasteria.booking.controller.impl.ChildControllerImpl;
-import com.soprasteria.booking.controller.impl.HiringControllerImpl;
-import com.soprasteria.booking.controller.impl.HiringcControllerImpl;
-import com.soprasteria.booking.controller.impl.NeedControllerImpl;
-import com.soprasteria.booking.dao.ChildDao;
-import com.soprasteria.booking.dao.HiringDao;
-import com.soprasteria.booking.dao.HiringcDao;
-import com.soprasteria.booking.dao.NeedDao;
+import com.soprasteria.booking.controller.*;
+import com.soprasteria.booking.controller.impl.*;
+import com.soprasteria.booking.dao.*;
 import com.soprasteria.booking.service.*;
-import com.soprasteria.booking.service.impl.ChildServiceImpl;
-import com.soprasteria.booking.service.impl.HiringServiceImpl;
-import com.soprasteria.booking.service.impl.HiringcServiceImpl;
-import com.soprasteria.booking.service.impl.NeedServiceImpl;
+import com.soprasteria.booking.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.hateoas.server.EntityLinks;
-
-
 
 
 @Configuration
@@ -51,27 +36,34 @@ public class ApiConfig {
         return new HiringcServiceImpl(hiringcDao);
     }
 
-
+    @Bean
+    public RecruiterService recruiterService(RecruiterDao recruiterDao){
+        return new RecruiterServiceImpl(recruiterDao);
+    }
 
 
     @Bean
-    public ChildController childController(ChildService childService,EntityLinks entityLinks){
-        return new ChildControllerImpl(childService,entityLinks);
+    public ChildController childController(ChildService childService){
+        return new ChildControllerImpl(childService);
     }
 
     @Bean
-    public NeedController needController(NeedService needService, EntityLinks entityLinks){
-        return new NeedControllerImpl(needService,entityLinks);
+    public NeedController needController(NeedService needService){
+        return new NeedControllerImpl(needService);
     }
 
     @Bean
-    public HiringController hiringController(HiringService hiringService,EntityLinks entityLinks){
-        return new HiringControllerImpl(hiringService,entityLinks);
+    public HiringController hiringController(HiringService hiringService){
+        return new HiringControllerImpl(hiringService);
     }
 
     @Bean
-    public HiringcController hiringcController(HiringcService hiringcService,EntityLinks entityLinks){
-        return new HiringcControllerImpl(hiringcService,entityLinks);
+    public HiringcController hiringcController(HiringcService hiringcService){
+        return new HiringcControllerImpl(hiringcService);
     }
-    
+
+    @Bean
+    public RecruiterController recruiterController(RecruiterService recruiterService){
+        return new RecruiterControllerImpl(recruiterService);
+    }
 }

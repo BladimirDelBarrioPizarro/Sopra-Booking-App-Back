@@ -20,11 +20,9 @@ import java.util.Objects;
 public class ChildControllerImpl implements ChildController {
 
     private ChildService childService;
-    private EntityLinks entityLinks;
 
-    public ChildControllerImpl(ChildService childService,EntityLinks entityLinks){
+    public ChildControllerImpl(ChildService childService){
         this.childService = childService;
-        this.entityLinks = entityLinks;
     }
 
     @Override
@@ -43,13 +41,13 @@ public class ChildControllerImpl implements ChildController {
     @Override
     public ResponseEntity<ChildDTO> saveChild(Child child) {
         log.info(" -- POST /child {}",child.getName());
-        return new ResponseEntity(childService.saveChild(child),HttpStatus.OK);
+        return new ResponseEntity<>(childService.saveChild(child),HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<ChildDTO> updateChild(Child child) {
         log.info(" -- PUT /childs {}",child.getName());
-        return new ResponseEntity(childService.updateChild(child),HttpStatus.OK);
+        return new ResponseEntity<>(childService.updateChild(child),HttpStatus.OK);
     }
 
     @Override
@@ -60,6 +58,6 @@ public class ChildControllerImpl implements ChildController {
             return ResponseEntity.noContent().build();
         }
         childService.deleteChild(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

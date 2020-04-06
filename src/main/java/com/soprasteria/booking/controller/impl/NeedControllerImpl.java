@@ -22,11 +22,10 @@ import java.util.Objects;
 public class NeedControllerImpl implements NeedController {
 
     private NeedService needService;
-    private final EntityLinks entityLinks;
 
-    public NeedControllerImpl(NeedService needService,EntityLinks entityLinks) {
+
+    public NeedControllerImpl(NeedService needService) {
         this.needService = needService;
-        this.entityLinks = entityLinks;
     }
 
     public ResponseEntity<List<NeedDTO>> findAll(Pageable pageable) {
