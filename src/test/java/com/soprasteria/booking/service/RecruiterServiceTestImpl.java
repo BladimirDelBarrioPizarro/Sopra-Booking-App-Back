@@ -42,17 +42,14 @@ public class RecruiterServiceTestImpl {
         RecruiterDTO recruiterDTO2 = recruiterService.saveRecruiter(recruiter);
         assert (recruiterDTO.getId().equals(recruiterDTO2.getId()));
     }
+
+    @Test
+    void deleteRecruiterTest(){
+        Recruiter recruiter = RecruiterServiceDummy.recruiterDummy();
+        recruiterService.saveRecruiter(recruiter);
+        recruiterService.deleteRecruiter(recruiter.getId());
+        RecruiterDTO recruiterDTO = recruiterService.findById(recruiter.getId());
+        assert (recruiterDTO == null);
+    }
 }
 
-/*
-*  @Test
-    void saveHiringTest() throws ParseException {
-        HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
-        Hiring hiring = HiringServiceDummy.hiringDummy();
-        given(hiringService.saveHiring(any())).willReturn(hiringDTO);
-        HiringDTO hiringDTO1 = hiringService.saveHiring(hiring);
-        assert (hiringDTO.getId().equals(hiringDTO1.getId()));
-    }
-*
-*
-* */
