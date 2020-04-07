@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface RecruiterService {
     List<RecruiterDTO> findAll();
+    RecruiterDTO findById(Long id);
     RecruiterDTO saveRecruiter(Recruiter recruiter);
 }

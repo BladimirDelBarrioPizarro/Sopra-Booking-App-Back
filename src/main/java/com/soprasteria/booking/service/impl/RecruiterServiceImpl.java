@@ -32,6 +32,17 @@ public class RecruiterServiceImpl implements RecruiterService {
     }
 
     @Override
+    public RecruiterDTO findById(Long id) {
+        try{
+            return RecruiterMapper.mapRecruiterOptionalToRecruiterDTO(recruiterDao.findById(id));
+        }catch (Exception ex){
+            log.error(" -- ERROR GET /recruiter {} ",id);
+            //throw new HandleExceptionHiringFindById(ex);
+            return null;
+        }
+    }
+
+    @Override
     public RecruiterDTO saveRecruiter(Recruiter recruiter) {
         try{
             return RecruiterMapper.mapRecruiterToRecruiterDTO(recruiterDao.save(recruiter));
@@ -40,5 +51,21 @@ public class RecruiterServiceImpl implements RecruiterService {
             throw new HandleExceptionRecruiterSave(ex);
         }
     }
+
+
+    /*
+    * @Override
+    public void deleteHiring(Long id) {
+        try{
+            hiringDao.deleteById(id);
+        }catch (Exception ex){
+            log.error(" -- ERROR DELETE /hiring {}",id);
+            throw new HandleExceptionHiringDelete(ex);
+        }
+    }
+    *
+    *
+    *
+    * */
 }
 

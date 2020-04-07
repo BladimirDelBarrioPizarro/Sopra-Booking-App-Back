@@ -4,6 +4,7 @@ import com.soprasteria.booking.model.dto.RecruiterDTO;
 import com.soprasteria.booking.model.entity.Recruiter;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RecruiterMapper {
@@ -21,4 +22,12 @@ public class RecruiterMapper {
                 .build();
     }
 
+    public static RecruiterDTO mapRecruiterOptionalToRecruiterDTO(Optional<Recruiter> optionalRecruiter) {
+        return RecruiterDTO.builder()
+                .id(optionalRecruiter.get().getId())
+                .name(optionalRecruiter.get().getName())
+                .surname(optionalRecruiter.get().getSurname())
+                .initials(optionalRecruiter.get().getInitials())
+                .build();
+    }
 }
