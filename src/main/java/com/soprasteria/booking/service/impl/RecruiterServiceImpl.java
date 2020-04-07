@@ -32,6 +32,28 @@ public class RecruiterServiceImpl implements RecruiterService {
 
     @Override
     public RecruiterDTO saveRecruiter(Recruiter recruiter) {
-        return null;
+        try{
+            return RecruiterMapper.mapRecruiterToRecruiterDTO(recruiterDao.save(recruiter));
+        }catch (Exception ex){
+            log.error(" -- ERROR POST /recruiter {}", ex.getMessage());
+            //throw new HandleExceptionRecruiterSave(ex);
+            return null;
+        }
+
     }
 }
+
+/*
+* @Override
+    public HiringDTO saveHiring(Hiring hiring) {
+        try{
+            return HiringMapper.mapHiringToHiringDTO(hiringDao.save(hiring));
+        }catch (Exception ex){
+            log.error(" -- ERROR POST /hirings {} ",ex.getMessage());
+            throw new HandleExceptionHiringSave(ex);
+        }
+    }
+*
+*
+*
+* */

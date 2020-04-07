@@ -12,7 +12,7 @@ public class RecruiterMapper {
         return recruiters.stream().map(RecruiterMapper::mapRecruiterToRecruiterDTO).collect(Collectors.toList());
     }
 
-    private static RecruiterDTO mapRecruiterToRecruiterDTO(Recruiter recruiter) {
+    public static RecruiterDTO mapRecruiterToRecruiterDTO(Recruiter recruiter) {
         return RecruiterDTO.builder()
                 .id(recruiter.getId())
                 .name(recruiter.getName())
