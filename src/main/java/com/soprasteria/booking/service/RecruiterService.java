@@ -9,4 +9,5 @@ public interface RecruiterService {
     List<RecruiterDTO> findAll();
     RecruiterDTO findById(Long id);
     RecruiterDTO saveRecruiter(Recruiter recruiter);
+    void deleteRecruiter(Long id);
 }

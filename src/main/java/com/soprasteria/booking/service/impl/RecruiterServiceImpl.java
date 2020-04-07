@@ -3,6 +3,7 @@ package com.soprasteria.booking.service.impl;
 import com.soprasteria.booking.dao.RecruiterDao;
 import com.soprasteria.booking.model.dto.RecruiterDTO;
 import com.soprasteria.booking.model.entity.Recruiter;
+import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterDelete;
 import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterFindAll;
 import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterFindById;
 import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterSave;
@@ -52,20 +53,14 @@ public class RecruiterServiceImpl implements RecruiterService {
         }
     }
 
-
-    /*
-    * @Override
-    public void deleteHiring(Long id) {
+    @Override
+    public void deleteRecruiter(Long id) {
         try{
-            hiringDao.deleteById(id);
+            recruiterDao.deleteById(id);
         }catch (Exception ex){
-            log.error(" -- ERROR DELETE /hiring {}",id);
-            throw new HandleExceptionHiringDelete(ex);
+            log.error(" -- ERROR DELETE /recruiter {}",id);
+            throw new HandleExceptionRecruiterDelete(ex);
         }
     }
-    *
-    *
-    *
-    * */
 }
 

@@ -25,7 +25,8 @@ public enum ErrorMessages {
 
     ERROR_HANDLE_RECRUITER_FIND_ALL(116,"Error in the extraction of recruiters"),
     ERROR_HANDLE_RECRUITER_FIND_BYID(117,"Error in the extraction of the selected recruiter"),
-    ERROR_HANDLE_RECRUITER_SAVE(118,"Error saving the selected recruiter");
+    ERROR_HANDLE_RECRUITER_SAVE(118,"Error saving the selected recruiter"),
+    ERROR_HANDLE_RECRUITER_DELETE(119,"Error deleting the selected recruiter");
 
     private Integer code;
     private String message;

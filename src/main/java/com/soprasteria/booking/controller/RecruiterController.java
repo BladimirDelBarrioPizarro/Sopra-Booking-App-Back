@@ -22,6 +22,6 @@ public interface RecruiterController {
     @PostMapping(path = "/recruiter",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<RecruiterDTO> saveRecruiter(@RequestBody Recruiter recruiter);
 
-    @DeleteMapping(path = "/recruiter",produces = {MediaType.APPLICATION_JSON_VALUE})
+    @DeleteMapping(path = "/recruiter/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<Void> deleteRecruiter(@PathVariable("id") Long id);
 }

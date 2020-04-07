@@ -45,18 +45,11 @@ public class RecruiterControllerImpl implements RecruiterController {
     @Override
     public ResponseEntity<Void> deleteRecruiter(Long id) {
         log.info(" -- DELETE /recruiter {}",id);
-        return null;
-    }
-}
-
-
-/*
-*  log.info(" -- DELETE /hiring {}",id);
-        HiringDTO hiringDTO = hiringService.findById(id);
-        if(hiringDTO == null){
+        RecruiterDTO recruiterDTO = recruiterService.findById(id);
+        if(recruiterDTO == null){
             return ResponseEntity.noContent().build();
         }
-        hiringService.deleteHiring(id);
+        recruiterService.deleteRecruiter(id);
         return new ResponseEntity<>(HttpStatus.OK);
-*
-* */
+    }
+}

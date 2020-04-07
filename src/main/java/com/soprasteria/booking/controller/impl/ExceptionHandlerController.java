@@ -203,8 +203,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
+    @ExceptionHandler(HandleExceptionRecruiterDelete.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionRecruiterDelete(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiter not delete {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_RECRUITER_DELETE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_RECRUITER_DELETE.getMessage(),getCurrentRequest().getMethod(),
+                ex.getMessage(),new Timestamp(new Date().getTime()));
+    }
+
 }
-
-
 
 
