@@ -1,6 +1,7 @@
 package com.soprasteria.booking.service;
 
 import com.soprasteria.booking.model.dto.RecruiterDTO;
+import com.soprasteria.booking.model.entity.Recruiter;
 import com.soprasteria.booking.service.dummy.RecruiterServiceDummy;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,5 +33,26 @@ public class RecruiterServiceTestImpl {
         RecruiterDTO recruiterDTO2 = recruiterService.findById(1L);
         assert (recruiterDTO2.getId().equals(recruiterDTO.getId()));
     }
+
+    @Test
+    void saveRecruiterTest(){
+        RecruiterDTO recruiterDTO = RecruiterServiceDummy.recruiterDTODummy();
+        Recruiter recruiter = RecruiterServiceDummy.recruiterDummy();
+        when(recruiterService.saveRecruiter(any())).thenReturn(recruiterDTO);
+        RecruiterDTO recruiterDTO2 = recruiterService.saveRecruiter(recruiter);
+        assert (recruiterDTO.getId().equals(recruiterDTO2.getId()));
+    }
 }
 
+/*
+*  @Test
+    void saveHiringTest() throws ParseException {
+        HiringDTO hiringDTO = HiringServiceDummy.hiringDTODummy();
+        Hiring hiring = HiringServiceDummy.hiringDummy();
+        given(hiringService.saveHiring(any())).willReturn(hiringDTO);
+        HiringDTO hiringDTO1 = hiringService.saveHiring(hiring);
+        assert (hiringDTO.getId().equals(hiringDTO1.getId()));
+    }
+*
+*
+* */
