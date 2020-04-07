@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,4 +25,12 @@ public class RecruiterServiceTestImpl {
         assert (recruiterDTOList2.size() > 0);
     }
 
+    @Test
+    void findByIdTest(){
+        RecruiterDTO recruiterDTO = RecruiterServiceDummy.recruiterDTODummy();
+        when(recruiterService.findById(any())).thenReturn(recruiterDTO);
+        RecruiterDTO recruiterDTO2 = recruiterService.findById(1L);
+        assert (recruiterDTO2.getId().equals(recruiterDTO.getId()));
+    }
 }
+

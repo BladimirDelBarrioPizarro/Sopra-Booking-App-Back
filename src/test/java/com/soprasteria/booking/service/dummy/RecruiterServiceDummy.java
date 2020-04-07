@@ -12,7 +12,7 @@ public class RecruiterServiceDummy {
         return Collections.singletonList(recruiterDTODummy());
     }
 
-    private static RecruiterDTO recruiterDTODummy() {
+    public static RecruiterDTO recruiterDTODummy() {
         return RecruiterDTO.builder()
                 .id(1L)
                 .surname("surname test")
@@ -20,7 +20,7 @@ public class RecruiterServiceDummy {
                 .build();
     }
 
-    private static Recruiter recruiterDummy(){
+    public static Recruiter recruiterDummy(){
         return  Recruiter.builder()
                 .id(2L)
                 .surname("Bladimir del Barrio Pizarro")
