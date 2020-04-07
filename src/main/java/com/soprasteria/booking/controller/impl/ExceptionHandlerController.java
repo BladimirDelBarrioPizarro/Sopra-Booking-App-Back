@@ -48,7 +48,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     public ResponseEntity<HttpErrorDTO> handleExceptionNeedFindById(Exception ex) {
         log.error(" -- ERROR SOPRA STERIA BOOKING : Need not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
-        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getCode(), HttpStatus.NO_CONTENT,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_NEED_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
@@ -95,7 +95,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     public ResponseEntity<HttpErrorDTO> handleExceptionHiringFindById(Exception ex) {
         log.error(" -- ERROR SOPRA STERIA BOOKING : Hiring not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
-        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getCode(), HttpStatus.NO_CONTENT,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_HIRING_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
@@ -142,7 +142,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     public ResponseEntity<HttpErrorDTO> handleExceptionChildFindById(Exception ex) {
         log.error(" -- ERROR SOPRA STERIA BOOKING : Child not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
-        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_FIND_BYID.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_CHILD_FIND_BYID.getCode(), HttpStatus.NO_CONTENT,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_CHILD_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
@@ -174,12 +174,32 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 
+    // Recruiter HandleController
+
     @ExceptionHandler(HandleExceptionRecruiterFindAll.class)
     public ResponseEntity<HttpErrorDTO> handleExceptionRecruiterFindAll(Exception ex) {
-        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiters not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiter not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
                 getCurrentRequest().getRequestURI());
         return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_ALL.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
                 getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_ALL.getMessage(),getCurrentRequest().getMethod(),
+                ex.getMessage(),new Timestamp(new Date().getTime()));
+    }
+
+    @ExceptionHandler(HandleExceptionRecruiterFindById.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionRecruiterFindById(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiters not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_BYID.getCode(), HttpStatus.NO_CONTENT,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_RECRUITER_FIND_BYID.getMessage(),getCurrentRequest().getMethod(),
+                ex.getMessage(),new Timestamp(new Date().getTime()));
+    }
+
+    @ExceptionHandler(HandleExceptionRecruiterSave.class)
+    public ResponseEntity<HttpErrorDTO> handleExceptionRecruiterSave(Exception ex) {
+        log.error(" -- ERROR SOPRA STERIA BOOKING : Recruiters not found {} {} {} ",getCurrentRequest().getMethod(),getCurrentRequest().getContextPath(),
+                getCurrentRequest().getRequestURI());
+        return HttpErrorMapper.buildHttpErrorDTO(ErrorMessages.ERROR_HANDLE_RECRUITER_SAVE.getCode(), HttpStatus.INTERNAL_SERVER_ERROR,
+                getCurrentRequest().getServletPath(),ErrorMessages.ERROR_HANDLE_RECRUITER_SAVE.getMessage(),getCurrentRequest().getMethod(),
                 ex.getMessage(),new Timestamp(new Date().getTime()));
     }
 

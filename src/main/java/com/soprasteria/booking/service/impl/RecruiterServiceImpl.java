@@ -4,6 +4,7 @@ import com.soprasteria.booking.dao.RecruiterDao;
 import com.soprasteria.booking.model.dto.RecruiterDTO;
 import com.soprasteria.booking.model.entity.Recruiter;
 import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterFindAll;
+import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterFindById;
 import com.soprasteria.booking.model.exceptions.HandleExceptionRecruiterSave;
 import com.soprasteria.booking.model.mapper.RecruiterMapper;
 import com.soprasteria.booking.service.RecruiterService;
@@ -37,8 +38,7 @@ public class RecruiterServiceImpl implements RecruiterService {
             return RecruiterMapper.mapRecruiterOptionalToRecruiterDTO(recruiterDao.findById(id));
         }catch (Exception ex){
             log.error(" -- ERROR GET /recruiter {} ",id);
-            //throw new HandleExceptionHiringFindById(ex);
-            return null;
+            throw new HandleExceptionRecruiterFindById(ex);
         }
     }
 
